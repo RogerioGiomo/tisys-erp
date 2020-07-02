@@ -1,0 +1,51 @@
+package br.com.tisyserp.controller.produto;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.validation.Valid;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import br.com.tisyserp.model.produto.Embalagem;
+import br.com.tisyserp.repository.produto.EmbalagemRepository;
+
+@Path("/Embalagem")
+@ApplicationScoped
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+public class EmbalagemController {
+	
+	String sql  = "";
+
+    @Inject
+	public
+    EmbalagemRepository EmbalagemRepo;
+
+    @Inject
+	EntityManager entityManager;
+
+	@GET
+	@Path("/{id}")
+	@Produces(value = MediaType.APPLICATION_JSON)
+	public Embalagem getUF(@PathParam("id") final Integer id) throws NoResultException {
+
+		final Embalagem resp = EmbalagemRepo.findById(id);
+		if (resp == null) {
+			throw new NoResultException("Embalagem - não encontrado - id: " + id);
+		}
+		return resp;
+	}
+
+	@POST
+    public @Valid Embalagem create(@Valid final Embalagem Embalagem) {
+		EmbalagemRepo.persist(Embalagem);
+	    return Embalagem;
+    }
+}
