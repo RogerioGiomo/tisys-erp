@@ -45,8 +45,8 @@ public class ProdutoFotoController {
 	}
 
 	@POST  @Transactional
-    public @Valid ProdutoFoto create(@Valid final ProdutoFoto ProdutoFoto) {
-		ProdutoFotoRepo.persist(ProdutoFoto);
-	    return ProdutoFoto;
+    public @Valid ProdutoFoto create(@Valid final ProdutoFoto produtoFoto) {
+		ProdutoFotoRepo.persist(produtoFoto);
+	    return produtoFoto;
     }
 }

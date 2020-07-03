@@ -45,8 +45,8 @@ public class FuncionarioController {
 	}
 
 	@POST  @Transactional
-    public @Valid Funcionario create(@Valid final Funcionario Funcionario) {
-		FuncionarioRepo.persist(Funcionario);
-	    return Funcionario;
+    public @Valid Funcionario create(@Valid final Funcionario funcionario) {
+		FuncionarioRepo.persist(funcionario);
+	    return funcionario;
     }
 }

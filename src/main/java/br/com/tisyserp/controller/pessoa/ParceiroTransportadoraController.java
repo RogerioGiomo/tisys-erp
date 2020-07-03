@@ -45,8 +45,8 @@ public class ParceiroTransportadoraController {
 	}
 
 	@POST  @Transactional
-    public @Valid ParceiroTransportadora create(@Valid final ParceiroTransportadora ParceiroTransportadora) {
-		ParceiroTransportadoraRepo.persist(ParceiroTransportadora);
-	    return ParceiroTransportadora;
+    public @Valid ParceiroTransportadora create(@Valid final ParceiroTransportadora parceiroTransportadora) {
+		ParceiroTransportadoraRepo.persist(parceiroTransportadora);
+	    return parceiroTransportadora;
     }
 }

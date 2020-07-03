@@ -45,8 +45,8 @@ public class UnidadeMedidaController {
 	}
 
 	@POST  @Transactional
-    public @Valid UnidadeMedida create(@Valid final UnidadeMedida UnidadeMedida) {
-		UnidadeMedidaRepo.persist(UnidadeMedida);
-	    return UnidadeMedida;
+    public @Valid UnidadeMedida create(@Valid final UnidadeMedida unidadeMedida) {
+		UnidadeMedidaRepo.persist(unidadeMedida);
+	    return unidadeMedida;
     }
 }

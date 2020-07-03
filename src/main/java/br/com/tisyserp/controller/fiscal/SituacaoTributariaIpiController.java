@@ -45,9 +45,9 @@ public class SituacaoTributariaIpiController {
 	}
 
 	@POST  @Transactional
-    public @Valid SituacaoTributariaIpi create(@Valid final SituacaoTributariaIpi SituacaoTributariaIpi) {
-		Repo.persist(SituacaoTributariaIpi);
-	    return SituacaoTributariaIpi;
+    public @Valid SituacaoTributariaIpi create(@Valid final SituacaoTributariaIpi situacaotributariaipi) {
+		Repo.persist(situacaotributariaipi);
+	    return situacaotributariaipi;
 	
     }
 }

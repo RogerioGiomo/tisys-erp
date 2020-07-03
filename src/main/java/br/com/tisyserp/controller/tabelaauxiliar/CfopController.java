@@ -45,8 +45,8 @@ public class CfopController {
 	}
 
 	@POST  @Transactional
-    public @Valid Cfop create(@Valid final Cfop Cfop) {
-		CfopRepo.persist(Cfop);
-	    return Cfop;
+    public @Valid Cfop create(@Valid final Cfop cfop) {
+		CfopRepo.persist(cfop);
+	    return cfop;
     }
 }

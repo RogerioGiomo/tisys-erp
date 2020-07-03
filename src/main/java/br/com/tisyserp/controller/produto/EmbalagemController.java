@@ -45,8 +45,8 @@ public class EmbalagemController {
 	}
 
 	@POST  @Transactional
-    public @Valid Embalagem create(@Valid final Embalagem Embalagem) {
-		EmbalagemRepo.persist(Embalagem);
-	    return Embalagem;
+    public @Valid Embalagem create(@Valid final Embalagem embalagem) {
+		EmbalagemRepo.persist(embalagem);
+	    return embalagem;
     }
 }

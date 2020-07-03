@@ -45,8 +45,8 @@ public class FuncaoController {
 	}
 
 	@POST  @Transactional
-    public @Valid Funcao create(@Valid final Funcao Funcao) {
-		FuncaoRepo.persist(Funcao);
-	    return Funcao;
+    public @Valid Funcao create(@Valid final Funcao funcao) {
+		FuncaoRepo.persist(funcao);
+	    return funcao;
     }
 }

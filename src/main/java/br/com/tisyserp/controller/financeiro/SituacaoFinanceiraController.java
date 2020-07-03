@@ -45,8 +45,8 @@ public class SituacaoFinanceiraController {
 	}
 
 	@POST  @Transactional
-    public @Valid SituacaoFinanceira create(@Valid final SituacaoFinanceira SituacaoFinanceira) {
-		SituacaoFinanceiraRepo.persist(SituacaoFinanceira);
-	    return SituacaoFinanceira;
+    public @Valid SituacaoFinanceira create(@Valid final SituacaoFinanceira situacaofinanceira) {
+		SituacaoFinanceiraRepo.persist(situacaofinanceira);
+	    return situacaofinanceira;
     }
 }

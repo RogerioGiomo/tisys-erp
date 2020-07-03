@@ -46,8 +46,8 @@ public class BancoController {
 
 	@POST  
 	@Transactional
-    public @Valid Banco create(@Valid final Banco Banco) {
-		BancoRepo.persist(Banco);
-	    return Banco;
+    public @Valid Banco create(@Valid final Banco banco) {
+		BancoRepo.persist(banco);
+	    return banco;
     }
 }

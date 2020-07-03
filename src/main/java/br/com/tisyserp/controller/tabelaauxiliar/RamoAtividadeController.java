@@ -45,8 +45,8 @@ public class RamoAtividadeController {
 	}
 
 	@POST  @Transactional
-    public @Valid RamoAtividade create(@Valid final RamoAtividade RamoAtividade) {
-		RamoAtividadeRepo.persist(RamoAtividade);
-	    return RamoAtividade;
+    public @Valid RamoAtividade create(@Valid final RamoAtividade ramoAtividade) {
+		RamoAtividadeRepo.persist(ramoAtividade);
+	    return ramoAtividade;
     }
 }

@@ -46,8 +46,8 @@ public class AssuntoController {
 
 	@POST  
 	@Transactional
-    public @Valid Assunto create(@Valid final Assunto Assunto) {
-		AssuntoRepo.persist(Assunto);
-	    return Assunto;
+    public @Valid Assunto create(@Valid final Assunto assunto) {
+		AssuntoRepo.persist(assunto);
+	    return assunto;
     }
 }

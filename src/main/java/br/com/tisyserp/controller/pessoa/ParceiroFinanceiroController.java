@@ -45,8 +45,8 @@ public class ParceiroFinanceiroController {
 	}
 
 	@POST  @Transactional
-    public @Valid ParceiroFinanceiro create(@Valid final ParceiroFinanceiro ParceiroFinanceiro) {
-		ParceiroFinanceiroRepo.persist(ParceiroFinanceiro);
-	    return ParceiroFinanceiro;
+    public @Valid ParceiroFinanceiro create(@Valid final ParceiroFinanceiro parceiroFinanceiro) {
+		ParceiroFinanceiroRepo.persist(parceiroFinanceiro);
+	    return parceiroFinanceiro;
     }
 }

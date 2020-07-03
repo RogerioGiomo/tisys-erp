@@ -44,9 +44,10 @@ public class AutorController {
 		return resp;
 	}
 
-	@POST  @Transactional
-    public @Valid Autor create(@Valid final Autor Autor) {
-		AutorRepo.persist(Autor);
-	    return Autor;
+	@POST  
+	@Transactional
+    public @Valid Autor create(@Valid final Autor autor) {
+		AutorRepo.persist(autor);
+	    return autor;
     }
 }

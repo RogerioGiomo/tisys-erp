@@ -45,8 +45,8 @@ public class CidadeController {
 	}
 
 	@POST  @Transactional
-    public @Valid Cidade create(@Valid final Cidade Cidade) {
-		CidadeRepo.persist(Cidade);
-	    return Cidade;
+    public @Valid Cidade create(@Valid final Cidade cidade) {
+		CidadeRepo.persist(cidade);
+	    return cidade;
     }
 }

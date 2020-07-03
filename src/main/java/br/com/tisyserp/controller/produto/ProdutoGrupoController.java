@@ -45,8 +45,8 @@ public class ProdutoGrupoController {
 	}
 
 	@POST  @Transactional
-    public @Valid ProdutoGrupo create(@Valid final ProdutoGrupo ProdutoGrupo) {
-		ProdutoGrupoRepo.persist(ProdutoGrupo);
-	    return ProdutoGrupo;
+    public @Valid ProdutoGrupo create(@Valid final ProdutoGrupo produtoGrupo) {
+		ProdutoGrupoRepo.persist(produtoGrupo);
+	    return produtoGrupo;
     }
 }

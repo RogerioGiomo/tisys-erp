@@ -45,9 +45,9 @@ public class PisController {
 	}
 
 	@POST  @Transactional
-    public @Valid Pis create(@Valid final Pis Pis) {
-		Repo.persist(Pis);
-	    return Pis;
+    public @Valid Pis create(@Valid final Pis pis) {
+		Repo.persist(pis);
+	    return pis;
 	
     }
 }

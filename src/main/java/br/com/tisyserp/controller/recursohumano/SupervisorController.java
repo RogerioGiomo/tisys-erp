@@ -45,8 +45,8 @@ public class SupervisorController {
 	}
 
 	@POST  @Transactional
-    public @Valid Supervisor create(@Valid final Supervisor Supervisor) {
-		SupervisorRepo.persist(Supervisor);
-	    return Supervisor;
+    public @Valid Supervisor create(@Valid final Supervisor supervisor) {
+		SupervisorRepo.persist(supervisor);
+	    return supervisor;
     }
 }

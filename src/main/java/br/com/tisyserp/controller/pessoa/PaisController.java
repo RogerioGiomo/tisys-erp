@@ -45,8 +45,8 @@ public class PaisController {
 	}
 
 	@POST  @Transactional
-    public @Valid Pais create(@Valid final Pais Pais) {
-		PaisRepo.persist(Pais);
-	    return Pais;
+    public @Valid Pais create(@Valid final Pais pais) {
+		PaisRepo.persist(pais);
+	    return pais;
     }
 }

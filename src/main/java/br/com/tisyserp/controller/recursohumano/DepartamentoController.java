@@ -45,8 +45,8 @@ public class DepartamentoController {
 	}
 
 	@POST  @Transactional
-    public @Valid Departamento create(@Valid final Departamento Departamento) {
-		DepartamentoRepo.persist(Departamento);
-	    return Departamento;
+    public @Valid Departamento create(@Valid final Departamento departamento) {
+		DepartamentoRepo.persist(departamento);
+	    return departamento;
     }
 }

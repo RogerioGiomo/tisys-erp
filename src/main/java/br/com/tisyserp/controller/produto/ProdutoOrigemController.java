@@ -45,8 +45,8 @@ public class ProdutoOrigemController {
 	}
 
 	@POST  @Transactional
-    public @Valid ProdutoOrigem create(@Valid final ProdutoOrigem ProdutoOrigem) {
-		ProdutoOrigemRepo.persist(ProdutoOrigem);
-	    return ProdutoOrigem;
+    public @Valid ProdutoOrigem create(@Valid final ProdutoOrigem produtoOrigem) {
+		ProdutoOrigemRepo.persist(produtoOrigem);
+	    return produtoOrigem;
     }
 }

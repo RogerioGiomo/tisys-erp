@@ -48,6 +48,6 @@ public class CofinsController {
     public @Valid Cofins create(@Valid final Cofins cofins) {
 		CofinsRepo.persist(cofins);
 	    return cofins;
-	
+
     }
 }

@@ -45,8 +45,8 @@ public class RotaController {
 	}
 
 	@POST  @Transactional
-    public @Valid Rota create(@Valid final Rota Rota) {
-		RotaRepo.persist(Rota);
-	    return Rota;
+    public @Valid Rota create(@Valid final Rota rota) {
+		RotaRepo.persist(rota);
+	    return rota;
     }
 }

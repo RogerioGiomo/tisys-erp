@@ -45,8 +45,8 @@ public class GerenteController {
 	}
 
 	@POST  @Transactional
-    public @Valid Gerente create(@Valid final Gerente Gerente) {
-		GerenteRepo.persist(Gerente);
-	    return Gerente;
+    public @Valid Gerente create(@Valid final Gerente gerente) {
+		GerenteRepo.persist(gerente);
+	    return gerente;
     }
 }

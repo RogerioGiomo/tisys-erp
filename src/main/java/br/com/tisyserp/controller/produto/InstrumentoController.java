@@ -45,8 +45,8 @@ public class InstrumentoController {
 	}
 
 	@POST  @Transactional
-    public @Valid Instrumento create(@Valid final Instrumento Instrumento) {
-		InstrumentoRepo.persist(Instrumento);
-	    return Instrumento;
+    public @Valid Instrumento create(@Valid final Instrumento instrumento) {
+		InstrumentoRepo.persist(instrumento);
+	    return instrumento;
     }
 }

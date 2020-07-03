@@ -45,8 +45,8 @@ public class ParceiroContatoController {
 	}
 
 	@POST  @Transactional
-    public @Valid ParceiroContato create(@Valid final ParceiroContato ParceiroContato) {
-		ParceiroContatoRepo.persist(ParceiroContato);
-	    return ParceiroContato;
+    public @Valid ParceiroContato create(@Valid final ParceiroContato parceiroContato) {
+		ParceiroContatoRepo.persist(parceiroContato);
+	    return parceiroContato;
     }
 }

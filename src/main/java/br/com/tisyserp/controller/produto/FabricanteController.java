@@ -45,8 +45,8 @@ public class FabricanteController {
 	}
 
 	@POST  @Transactional
-    public @Valid Fabricante create(@Valid final Fabricante Fabricante) {
-		FabricanteRepo.persist(Fabricante);
-	    return Fabricante;
+    public @Valid Fabricante create(@Valid final Fabricante fabricante) {
+		FabricanteRepo.persist(fabricante);
+	    return fabricante;
     }
 }

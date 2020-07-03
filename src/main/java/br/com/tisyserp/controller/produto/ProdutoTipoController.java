@@ -45,8 +45,8 @@ public class ProdutoTipoController {
 	}
 
 	@POST  @Transactional
-    public @Valid ProdutoTipo create(@Valid final ProdutoTipo ProdutoTipo) {
-		ProdutoTipoRepo.persist(ProdutoTipo);
-	    return ProdutoTipo;
+    public @Valid ProdutoTipo create(@Valid final ProdutoTipo produtoTipo) {
+		ProdutoTipoRepo.persist(produtoTipo);
+	    return produtoTipo;
     }
 }

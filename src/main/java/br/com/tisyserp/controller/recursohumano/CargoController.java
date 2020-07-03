@@ -45,8 +45,8 @@ public class CargoController {
 	}
 
 	@POST  @Transactional
-    public @Valid Cargo create(@Valid final Cargo Cargo) {
-		CargoRepo.persist(Cargo);
-	    return Cargo;
+    public @Valid Cargo create(@Valid final Cargo cargo) {
+		CargoRepo.persist(cargo);
+	    return cargo;
     }
 }

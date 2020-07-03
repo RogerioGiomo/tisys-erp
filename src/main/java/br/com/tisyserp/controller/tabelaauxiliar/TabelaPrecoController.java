@@ -45,8 +45,8 @@ public class TabelaPrecoController {
 	}
 
 	@POST  @Transactional
-    public @Valid TabelaPreco create(@Valid final TabelaPreco TabelaPreco) {
-		TabelaPrecoRepo.persist(TabelaPreco);
-	    return TabelaPreco;
+    public @Valid TabelaPreco create(@Valid final TabelaPreco tabelaPreco) {
+		TabelaPrecoRepo.persist(tabelaPreco);
+	    return tabelaPreco;
     }
 }

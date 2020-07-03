@@ -45,8 +45,8 @@ public class ParceiroTabelaPrecoController {
 	}
 
 	@POST  @Transactional
-    public @Valid ParceiroTabelaPreco create(@Valid final ParceiroTabelaPreco ParceiroTabelaPreco) {
-		ParceiroTabelaPrecoRepo.persist(ParceiroTabelaPreco);
-	    return ParceiroTabelaPreco;
+    public @Valid ParceiroTabelaPreco create(@Valid final ParceiroTabelaPreco parceiroTabelaPreco) {
+		ParceiroTabelaPrecoRepo.persist(parceiroTabelaPreco);
+	    return parceiroTabelaPreco;
     }
 }

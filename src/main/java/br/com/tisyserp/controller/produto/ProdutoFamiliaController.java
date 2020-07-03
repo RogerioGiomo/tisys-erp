@@ -45,8 +45,8 @@ public class ProdutoFamiliaController {
 	}
 
 	@POST  @Transactional
-    public @Valid ProdutoFamilia create(@Valid final ProdutoFamilia ProdutoFamilia) {
-		ProdutoFamiliaRepo.persist(ProdutoFamilia);
-	    return ProdutoFamilia;
+    public @Valid ProdutoFamilia create(@Valid final ProdutoFamilia produtoFamilia) {
+		ProdutoFamiliaRepo.persist(produtoFamilia);
+	    return produtoFamilia;
     }
 }

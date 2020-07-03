@@ -45,8 +45,8 @@ public class DescricaoTecnicaController {
 	}
 
 	@POST  @Transactional
-    public @Valid DescricaoTecnica create(@Valid final DescricaoTecnica DescricaoTecnica) {
-		DescricaoTecnicaRepo.persist(DescricaoTecnica);
-	    return DescricaoTecnica;
+    public @Valid DescricaoTecnica create(@Valid final DescricaoTecnica descricaoTecnica) {
+		DescricaoTecnicaRepo.persist(descricaoTecnica);
+	    return descricaoTecnica;
     }
 }

@@ -45,8 +45,8 @@ public class UsuarioController {
 	}
 
 	@POST  @Transactional
-    public @Valid Usuario create(@Valid final Usuario Usuario) {
-		UsuarioRepo.persist(Usuario);
-	    return Usuario;
+    public @Valid Usuario create(@Valid final Usuario usuario) {
+		UsuarioRepo.persist(usuario);
+	    return usuario;
     }
 }

@@ -45,8 +45,8 @@ public class ProdutoFornecedorController {
 	}
 
 	@POST  @Transactional
-    public @Valid ProdutoFornecedor create(@Valid final ProdutoFornecedor ProdutoFornecedor) {
-		ProdutoFornecedorRepo.persist(ProdutoFornecedor);
-	    return ProdutoFornecedor;
+    public @Valid ProdutoFornecedor create(@Valid final ProdutoFornecedor produtoFornecedor) {
+		ProdutoFornecedorRepo.persist(produtoFornecedor);
+	    return produtoFornecedor;
     }
 }

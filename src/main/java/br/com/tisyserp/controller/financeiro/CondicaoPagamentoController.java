@@ -46,8 +46,8 @@ public class CondicaoPagamentoController {
 
 	@POST  
 	@Transactional
-    public @Valid CondicaoPagamento create(@Valid final CondicaoPagamento CondicaoPagamento) {
-		Repo.persist(CondicaoPagamento);
-	    return CondicaoPagamento;
+    public @Valid CondicaoPagamento create(@Valid final CondicaoPagamento condicaopagamento) {
+		Repo.persist(condicaopagamento);
+	    return condicaopagamento;
     }
 }

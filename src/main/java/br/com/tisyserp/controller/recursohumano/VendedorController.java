@@ -45,8 +45,8 @@ public class VendedorController {
 	}
 
 	@POST  @Transactional
-    public @Valid Vendedor create(@Valid final Vendedor Vendedor) {
-		VendedorRepo.persist(Vendedor);
-	    return Vendedor;
+    public @Valid Vendedor create(@Valid final Vendedor vendedor) {
+		VendedorRepo.persist(vendedor);
+	    return vendedor;
     }
 }

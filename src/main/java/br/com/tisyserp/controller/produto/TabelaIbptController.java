@@ -45,8 +45,8 @@ public class TabelaIbptController {
 	}
 
 	@POST  @Transactional
-    public @Valid TabelaIbpt create(@Valid final TabelaIbpt TabelaIbpt) {
-		TabelaIbptRepo.persist(TabelaIbpt);
-	    return TabelaIbpt;
+    public @Valid TabelaIbpt create(@Valid final TabelaIbpt tabelaIbpt) {
+		TabelaIbptRepo.persist(tabelaIbpt);
+	    return tabelaIbpt;
     }
 }

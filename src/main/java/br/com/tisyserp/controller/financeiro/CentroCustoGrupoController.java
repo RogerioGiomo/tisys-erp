@@ -46,8 +46,8 @@ public class CentroCustoGrupoController {
 
 	@POST  
 	@Transactional
-    public @Valid CentroCustoGrupo create(@Valid final CentroCustoGrupo CentroCustoGrupo) {
-		CentroCustoGrupoRepo.persist(CentroCustoGrupo);
-	    return CentroCustoGrupo;
+    public @Valid CentroCustoGrupo create(@Valid final CentroCustoGrupo centrocustogrupo) {
+		CentroCustoGrupoRepo.persist(centrocustogrupo);
+	    return centrocustogrupo;
     }
 }

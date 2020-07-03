@@ -45,8 +45,8 @@ public class ContatoController {
 	}
 
 	@POST  @Transactional
-    public @Valid Contato create(@Valid final Contato Contato) {
-		ContatoRepo.persist(Contato);
-	    return Contato;
+    public @Valid Contato create(@Valid final Contato contato) {
+		ContatoRepo.persist(contato);
+	    return contato;
     }
 }

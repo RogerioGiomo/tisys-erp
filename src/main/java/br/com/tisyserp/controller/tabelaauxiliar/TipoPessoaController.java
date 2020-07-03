@@ -45,8 +45,8 @@ public class TipoPessoaController {
 	}
 
 	@POST  @Transactional
-    public @Valid TipoPessoa create(@Valid final TipoPessoa TipoPessoa) {
-		TipoPessoaRepo.persist(TipoPessoa);
-	    return TipoPessoa;
+    public @Valid TipoPessoa create(@Valid final TipoPessoa tipoPessoa) {
+		TipoPessoaRepo.persist(tipoPessoa);
+	    return tipoPessoa;
     }
 }

@@ -45,8 +45,8 @@ public class StatusController {
 	}
 
 	@POST  @Transactional
-    public @Valid Status create(@Valid final Status Status) {
-		StatusRepo.persist(Status);
-	    return Status;
+    public @Valid Status create(@Valid final Status status) {
+		StatusRepo.persist(status);
+	    return status;
     }
 }

@@ -46,9 +46,9 @@ public class ModeloFiscalController {
 	}
 
 	@POST  @Transactional
-    public @Valid ModeloFiscal create(@Valid final ModeloFiscal ModeloFiscal) {
-		Repo.persist(ModeloFiscal);
-	    return ModeloFiscal;
+    public @Valid ModeloFiscal create(@Valid final ModeloFiscal modelofiscal) {
+		Repo.persist(modelofiscal);
+	    return modelofiscal;
 	
     }
 }

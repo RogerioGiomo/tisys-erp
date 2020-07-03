@@ -45,8 +45,8 @@ public class ParceiroObraResponsavelController {
 	}
 
 	@POST  @Transactional
-    public @Valid ParceiroObraResponsavel create(@Valid final ParceiroObraResponsavel ParceiroObraResponsavel) {
-		ParceiroObraResponsavelRepo.persist(ParceiroObraResponsavel);
-	    return ParceiroObraResponsavel;
+    public @Valid ParceiroObraResponsavel create(@Valid final ParceiroObraResponsavel parceiroObraResponsavel) {
+		ParceiroObraResponsavelRepo.persist(parceiroObraResponsavel);
+	    return parceiroObraResponsavel;
     }
 }

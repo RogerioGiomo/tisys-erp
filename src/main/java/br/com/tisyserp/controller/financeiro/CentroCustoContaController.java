@@ -46,8 +46,8 @@ public class CentroCustoContaController {
 
 	@POST  
 	@Transactional
-	    public @Valid CentroCustoConta create(@Valid final CentroCustoConta CentroCustoConta) {
-		CentroCustoContaRepo.persist(CentroCustoConta);
-	    return CentroCustoConta;
+	    public @Valid CentroCustoConta create(@Valid final CentroCustoConta centrocustoconta) {
+		CentroCustoContaRepo.persist(centrocustoconta);
+	    return centrocustoconta;
     }
 }

@@ -45,8 +45,8 @@ public class MotoristaController {
 	}
 
 	@POST  @Transactional
-    public @Valid Motorista create(@Valid final Motorista Motorista) {
-		MotoristaRepo.persist(Motorista);
-	    return Motorista;
+    public @Valid Motorista create(@Valid final Motorista motorista) {
+		MotoristaRepo.persist(motorista);
+	    return motorista;
     }
 }

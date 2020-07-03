@@ -45,8 +45,8 @@ public class RegiaoController {
 	}
 
 	@POST  @Transactional
-    public @Valid Regiao create(@Valid final Regiao Regiao) {
-		RegiaoRepo.persist(Regiao);
-	    return Regiao;
+    public @Valid Regiao create(@Valid final Regiao regiao) {
+		RegiaoRepo.persist(regiao);
+	    return regiao;
     }
 }

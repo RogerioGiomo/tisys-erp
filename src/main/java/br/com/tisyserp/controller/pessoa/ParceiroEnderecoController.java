@@ -45,8 +45,8 @@ public class ParceiroEnderecoController {
 	}
 
 	@POST  @Transactional
-    public @Valid ParceiroEndereco create(@Valid final ParceiroEndereco ParceiroEndereco) {
-		ParceiroEnderecoRepo.persist(ParceiroEndereco);
-	    return ParceiroEndereco;
+    public @Valid ParceiroEndereco create(@Valid final ParceiroEndereco parceiroEndereco) {
+		ParceiroEnderecoRepo.persist(parceiroEndereco);
+	    return parceiroEndereco;
     }
 }

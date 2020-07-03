@@ -45,9 +45,9 @@ public class SerieFiscalController  {
 	}
 
 	@POST  @Transactional
-    public @Valid SerieFiscal create(@Valid final SerieFiscal SerieFiscal) {
-		Repo.persist(SerieFiscal);
-	    return SerieFiscal;
+    public @Valid SerieFiscal create(@Valid final SerieFiscal seriefiscal) {
+		Repo.persist(seriefiscal);
+	    return seriefiscal;
 	
     }
 }

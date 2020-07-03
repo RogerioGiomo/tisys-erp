@@ -45,8 +45,8 @@ public class ProdutoCotacaoController {
 	}
 
 	@POST  @Transactional
-    public @Valid ProdutoCotacao create(@Valid final ProdutoCotacao ProdutoCotacao) {
-		ProdutoCotacaoRepo.persist(ProdutoCotacao);
-	    return ProdutoCotacao;
+    public @Valid ProdutoCotacao create(@Valid final ProdutoCotacao produtoCotacao) {
+		ProdutoCotacaoRepo.persist(produtoCotacao);
+	    return produtoCotacao;
     }
 }

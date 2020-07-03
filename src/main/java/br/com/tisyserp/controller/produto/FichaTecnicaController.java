@@ -45,8 +45,8 @@ public class FichaTecnicaController {
 	}
 
 	@POST  @Transactional
-    public @Valid FichaTecnica create(@Valid final FichaTecnica FichaTecnica) {
-		FichaTecnicaRepo.persist(FichaTecnica);
-	    return FichaTecnica;
+    public @Valid FichaTecnica create(@Valid final FichaTecnica fichaTecnica) {
+		FichaTecnicaRepo.persist(fichaTecnica);
+	    return fichaTecnica;
     }
 }

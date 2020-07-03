@@ -45,8 +45,8 @@ public class EmpresaController {
 	}
 
 	@POST  @Transactional
-    public @Valid Empresa create(@Valid final Empresa Empresa) {
-		EmpresaRepo.persist(Empresa);
-	    return Empresa;
+    public @Valid Empresa create(@Valid final Empresa empresa) {
+		EmpresaRepo.persist(empresa);
+	    return empresa;
     }
 }

@@ -45,8 +45,8 @@ public class EditoraController {
 	}
 
 	@POST  @Transactional
-    public @Valid Editora create(@Valid final Editora Editora) {
-		EditoraRepo.persist(Editora);
-	    return Editora;
+    public @Valid Editora create(@Valid final Editora editora) {
+		EditoraRepo.persist(editora);
+	    return editora;
     }
 }

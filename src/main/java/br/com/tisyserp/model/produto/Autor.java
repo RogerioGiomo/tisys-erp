@@ -1,7 +1,5 @@
 package br.com.tisyserp.model.produto;
 
-
-
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +13,6 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
 @Table(name = "autor")
-
 public class Autor  extends PanacheEntityBase {
 	
 	public static final Long serialVersionUID = 1L;

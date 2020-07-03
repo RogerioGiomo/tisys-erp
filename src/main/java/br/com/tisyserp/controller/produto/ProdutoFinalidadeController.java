@@ -45,8 +45,8 @@ public class ProdutoFinalidadeController {
 	}
 
 	@POST  @Transactional
-    public @Valid ProdutoFinalidade create(@Valid final ProdutoFinalidade ProdutoFinalidade) {
-		ProdutoFinalidadeRepo.persist(ProdutoFinalidade);
-	    return ProdutoFinalidade;
+    public @Valid ProdutoFinalidade create(@Valid final ProdutoFinalidade produtoFinalidade) {
+		ProdutoFinalidadeRepo.persist(produtoFinalidade);
+	    return produtoFinalidade;
     }
 }
