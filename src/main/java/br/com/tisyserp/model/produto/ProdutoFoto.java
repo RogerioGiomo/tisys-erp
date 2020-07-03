@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
@@ -25,8 +24,9 @@ public class ProdutoFoto  extends PanacheEntityBase {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer foto_id;
 	
-	@JoinColumn(name = "foto_prod_id", referencedColumnName = "prod_id")  // Codigo dos itens da receita codigo fiho
-	public Produto prod_id;
+	public Integer foto_prod_id;
+	// @JoinColumn(name = "foto_prod_id", referencedColumnName = "prod_id")  
+	// public Produto prod_id;
 
 	@Lob @Column(name="foto_imagem")
 	public byte[] picture;

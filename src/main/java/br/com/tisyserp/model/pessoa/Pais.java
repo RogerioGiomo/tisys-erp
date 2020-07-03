@@ -25,6 +25,5 @@ public class Pais extends PanacheEntityBase {
 
 	@Size(max = 120)
 	public String pais_desc;
-
 	
 }

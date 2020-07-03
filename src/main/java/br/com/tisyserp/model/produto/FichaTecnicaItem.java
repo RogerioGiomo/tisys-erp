@@ -1,13 +1,12 @@
 package br.com.tisyserp.model.produto;
 
-
-
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -29,14 +28,16 @@ public class FichaTecnicaItem  extends PanacheEntityBase {
 	@Size(max = 60)
 	public String fitei_desc;
 
-	@JoinColumn(name = "fitei_id", referencedColumnName = "fite_id")   //Codigo da Receita , codigo pai    
-	public FichaTecnica fite_id;
+	@JoinColumn(name = "fite_fitei_id", referencedColumnName = "fite_id")   //Codigo da Receita , codigo pai    
+	@ManyToOne
+	public FichaTecnica fite_fitei_id;
 
 	@JoinColumn(name = "fitei_prod_id", referencedColumnName = "prod_id")   //Codigo da Receita , codigo pai    
-	public Produto prod_id;
+	@ManyToOne
+	public Produto fitei_prod_id;
 
 	@NotNull
-	public double fitei_preco_custo;  //  valor total da somatoria dos itens da ficha tecnica
+	public double fitei_preco_custo;  //  valor de custo do item 
 	
 	@NotNull
 	public double fitei_quan;  //  quantidade do item para a produzir

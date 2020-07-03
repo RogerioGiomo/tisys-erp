@@ -1,7 +1,5 @@
 package br.com.tisyserp.model.pessoa;
 
-
-
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +12,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import br.com.tisyserp.model.TabelaAuxiliar.Empresa;
-import br.com.tisyserp.model.produto.Produto;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
@@ -32,8 +29,9 @@ public class ParceiroTabelaPreco extends PanacheEntityBase {
 	@OneToOne
 	public Empresa empr_id;
 
-	@JoinColumn(name = "ptabpr_prod_id", referencedColumnName = "prod_id")  // Codigo dos itens da receita codigo fiho
-	public Produto prod_id;
+	public Integer ptabpr_prod_id;
+	// @JoinColumn(name = "ptabpr_prod_id", referencedColumnName = "prod_id")  // Codigo dos itens da receita codigo fiho
+	// public Produto ptabpr_prod_id;
 
 	@NotNull
 	@Size(max = 12)

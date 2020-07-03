@@ -1,7 +1,5 @@
 package br.com.tisyserp.model.TabelaAuxiliar;
 
-
-
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +12,7 @@ import javax.validation.constraints.Size;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
-@Table(name = "status", schema="Status inativo ativo")
+@Table(name = "status")
 public class Status extends PanacheEntityBase  {
 	public static final Long serialVersionUID = 1L;
 

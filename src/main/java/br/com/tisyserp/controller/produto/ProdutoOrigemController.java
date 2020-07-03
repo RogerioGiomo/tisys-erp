@@ -1,4 +1,4 @@
-package br.com.tisyserp.controller.fiscal;
+package br.com.tisyserp.controller.produto;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -13,20 +13,20 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.tisyserp.model.fiscal.OrigemProduto;
-import br.com.tisyserp.repository.fiscal.OrigemProdutoRepository;
+import br.com.tisyserp.model.produto.ProdutoOrigem;
+import br.com.tisyserp.repository.produto.ProdutoOrigemRepository;
 
-@Path("/origemproduto")
+@Path("/produto_origem")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class OrigemProdutoController {
+public class ProdutoOrigemController {
 	
 	String sql  = "";
 
     @Inject
 	public
-    OrigemProdutoRepository Repo;
+    ProdutoOrigemRepository ProdutoOrigemRepo;
 
     @Inject
 	EntityManager entityManager;
@@ -34,19 +34,18 @@ public class OrigemProdutoController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public OrigemProduto getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public ProdutoOrigem getUF(@PathParam("id") final Integer id) throws NoResultException {
 
-		final OrigemProduto resp = Repo.findById(id);
+		final ProdutoOrigem resp = ProdutoOrigemRepo.findById(id);
 		if (resp == null) {
-			throw new NoResultException("OrigemProduto - não encontrado - id: " + id);
+			throw new NoResultException("ProdutoOrigem - não encontrado - id: " + id);
 		}
 		return resp;
 	}
 
 	@POST
-    public @Valid OrigemProduto create(@Valid final OrigemProduto OrigemProduto) {
-		Repo.persist(OrigemProduto);
-	    return OrigemProduto;
-	
+    public @Valid ProdutoOrigem create(@Valid final ProdutoOrigem ProdutoOrigem) {
+		ProdutoOrigemRepo.persist(ProdutoOrigem);
+	    return ProdutoOrigem;
     }
 }

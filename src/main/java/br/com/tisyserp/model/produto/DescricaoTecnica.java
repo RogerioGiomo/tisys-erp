@@ -1,13 +1,10 @@
 package br.com.tisyserp.model.produto;
 
-
-
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -29,7 +26,8 @@ public class DescricaoTecnica  extends PanacheEntityBase {
 	@Size(max = 120)
 	public String destec_desc;
 
-	@JoinColumn(name = "destec_prod_id", referencedColumnName = "prod_id")  // Codigo dos itens da receita codigo fiho
-	public Produto prod_id;
+	public Integer destec_prod_id;
+	// @JoinColumn(name = "destec_prod_id", referencedColumnName = "prod_id")  // Codigo dos itens da receita codigo fiho
+	// public Produto prod_id;
 	
 }

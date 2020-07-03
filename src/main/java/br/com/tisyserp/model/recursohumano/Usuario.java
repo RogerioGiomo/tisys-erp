@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -24,6 +25,7 @@ public class Usuario extends PanacheEntityBase {
 	public Integer usua_id;
 	
 	@JoinColumn(name = "usua_func_id", referencedColumnName = "func_id") 
+	@ManyToOne
 	public Funcionario func_id;
 
 	@NotNull

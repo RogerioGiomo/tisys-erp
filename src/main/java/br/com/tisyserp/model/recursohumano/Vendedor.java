@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -33,11 +34,16 @@ public class Vendedor extends PanacheEntityBase {
 	
 	@JoinColumn(name = "vend_func_id", referencedColumnName = "func_id" )
 	@OneToOne
-	public Funcionario func_id;
+	public Funcionario vend_func_id;
 
 	@JoinColumn(name = "vend_supe_id", referencedColumnName = "supe_id")  // vendeddor
-	public Supervisor supe_id;
+	@ManyToOne
+	public Supervisor vend_supe_id;
 	
+	@JoinColumn(name = "vend_gere_id", referencedColumnName = "gere_id")
+	@OneToOne
+	public Gerente vend_gere_id;
+
 	@NotNull
 	@Size(max = 1)
 	public String vend_status;
@@ -50,13 +56,6 @@ public class Vendedor extends PanacheEntityBase {
 	@Size(max = 50)
 	public String vend_email;
 	
-	@JoinColumn(name = "vend_gera_id", referencedColumnName = "func_id")
-	@OneToOne
-	public Funcionario func_id_gere;
-
-	@JoinColumn(name = "vend_supe_id", referencedColumnName = "func_id")
-	@OneToOne
-	public Funcionario func_id_supe;
 
 }
 

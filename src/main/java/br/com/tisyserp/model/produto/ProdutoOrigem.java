@@ -1,6 +1,6 @@
-package br.com.tisyserp.model.fiscal;
+package br.com.tisyserp.model.produto;
 
-
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,22 +12,18 @@ import javax.validation.constraints.Size;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
-@Table(name = "origem_produto")
+@Table(name = "produto_origem")
 
-public class OrigemProduto extends PanacheEntityBase {
+public class ProdutoOrigem  extends PanacheEntityBase {
 	
 	public static final Long serialVersionUID = 1L;
 	@Id
-	
+	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer orig_id;
-
-	@NotNull
-	@Size(max = 2)
-	public String Orig_codi;   //'codigo definido pela legislacao'
+	public Integer pror_id;
 
 	@NotNull
 	@Size(max = 60)
-	public String orig_desc;
+	public String pror_desc;
 
 }

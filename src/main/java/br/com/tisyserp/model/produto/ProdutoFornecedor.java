@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -29,16 +30,20 @@ public class ProdutoFornecedor  extends PanacheEntityBase {
 	public String prfo_desc;
 
 	@JoinColumn(name = "prfo_prod_id", referencedColumnName = "prod_id")  // Codigo dos itens da receita codigo fiho
-	public Produto prod_id;
+	@ManyToOne
+	public Produto prfo_prod_id;
 
 	@JoinColumn(name = "prfo_parc_id", referencedColumnName = "parc_id")  // Codigo dos itens da receita codigo fiho
-	public Parceiro parc_id;
+	@ManyToOne
+	public Parceiro prfo_parc_id;
 	
 	@JoinColumn(name = "prod_unme_id", referencedColumnName = "unme_id")  // Codigo dos itens da receita codigo fiho
+	@ManyToOne
 	public UnidadeMedida unme_id;
 
 	@JoinColumn(name = "prod_emba_id", referencedColumnName = "emba_id")  // Codigo dos itens da receita codigo fiho
-	public Embalagem emba_id;
+	@ManyToOne
+	public Embalagem prod_emba_id;
 
 	@NotNull
 	@Size(max = 20)

@@ -1,19 +1,16 @@
 package br.com.tisyserp.model.produto;
 
-
 import java.util.Date;
-
-import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import br.com.tisyserp.model.pessoa.Parceiro;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
@@ -23,7 +20,6 @@ public class Produto  extends PanacheEntityBase {
 	
 	public static final Long serialVersionUID = 1L;
 	@Id
-	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer prod_id;
 	
@@ -39,32 +35,43 @@ public class Produto  extends PanacheEntityBase {
 	@Size(max = 80)
 	public String prod_desc_redu;
 
-	@JoinColumn(name = "prod_fabr_id", referencedColumnName = "parc_id")  // Codigo dos itens da receita codigo fiho
-	public Parceiro parc_id;
+	// public Integer prod_fabr_id;
+	@JoinColumn(name = "prod_fabr_id", referencedColumnName = "fabr_id")  // Codigo dos itens da receita codigo fiho
+	@ManyToOne
+	public Fabricante prod_fabr_id;
 	
 	@JoinColumn(name = "prod_grup_id", referencedColumnName = "grup_id")  // Codigo dos itens da receita codigo fiho
-	public ProdutoGrupo grup_id;
+	@ManyToOne
+	public ProdutoGrupo prod_grup_id;
 
 	@JoinColumn(name = "prod_fami_id", referencedColumnName = "fami_id")  // Codigo dos itens da receita codigo fiho
-	public ProdutoFamilia fami_id;
+	@ManyToOne
+	public ProdutoFamilia prod_fami_id;
 
+//	public Integer prod_emba_id;
 	@JoinColumn(name = "prod_emba_id", referencedColumnName = "emba_id")  // Codigo dos itens da receita codigo fiho
-	public Embalagem emba_id;
+	@ManyToOne
+	public Embalagem prod_emba_id;
 	
 	@JoinColumn(name = "prod_unme_id", referencedColumnName = "unme_id")  // Codigo dos itens da receita codigo fiho
-	public UnidadeMedida unme_id;
+	@ManyToOne
+	public UnidadeMedida prod_unme_id;
 
 	@JoinColumn(name = "prod_tipr_id", referencedColumnName = "tipr_id")  // Tipo do Produto diferente do Sped
-	public ProdutoTipo tipr_id;
+	@ManyToOne
+	public ProdutoTipo prod_tipr_id;
 
 	@JoinColumn(name = "prod_tiprs_id", referencedColumnName = "tiprs_id")  // Tipo do Produto diferente do Sped
-	public ProdutoSpedTipo tiprs_id;
+	@ManyToOne
+	public ProdutoSpedTipo prod_tiprs_id;
 
-	//@JoinColumn(name = "prod_orig_id", referencedColumnName = "orig_id")  // Tipo do Produto diferente do Sped
-	//public ProdutoOrigem orig_id;
+	@JoinColumn(name = "prod_pror_id", referencedColumnName = "pror_id")  // Tipo do Produto diferente do Sped
+	@ManyToOne
+	public ProdutoOrigem prod_pror_id;
 
 	@JoinColumn(name = "prod_prfin_id", referencedColumnName = "prfin_id")  // Tipo do Produto diferente do Sped
-	public ProdutoFinalidade prfin_id;
+	@ManyToOne
+	public ProdutoFinalidade prod_prfin_id;
 
 	@NotNull
 	@Size(max = 16)

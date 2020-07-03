@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -23,8 +24,10 @@ public class Supervisor extends PanacheEntityBase {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer supe_id;
 	
-	@JoinColumn(name = "supe_func_id", referencedColumnName = "func_id") 
-	public Funcionario func_id;
+	//public Integer supe_func_id;
+	@JoinColumn(name = "supe_func_id", referencedColumnName = "func_id" )
+	@OneToOne
+	public Funcionario supe_func_id;
 
 	@NotNull
 	@Size(max = 20)

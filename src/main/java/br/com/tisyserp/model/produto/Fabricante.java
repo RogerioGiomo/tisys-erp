@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -29,7 +30,8 @@ public class Fabricante  extends PanacheEntityBase {
 	public String fabr_desc;
 
 	@JoinColumn(name = "fabr_parc_id", referencedColumnName = "parc_id")  // Codigo dos itens da receita codigo fiho
-	public Parceiro parc_id;
+	@OneToOne
+	public Parceiro fabr_parc_id;
 
 
 }

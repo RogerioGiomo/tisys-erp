@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -27,7 +26,10 @@ public class ParceiroObraResponsavel extends PanacheEntityBase {
 	@Size(max = 60)
 	public String pare_desc;   /// Nome do Resposanvel / o mesmo cadastrado no parceiro
 	
-	@JoinColumn(name = "pare_paob_id", referencedColumnName = "paob_id")
-	public ParceiroObra pare_paob_id;
+	public Integer pare_paob_id;
+
+	// @JoinColumn(name = "pare_paob_id", referencedColumnName = "paob_id")
+	// @OneToOne
+	// public Pais pare_paob_id;
 
 }

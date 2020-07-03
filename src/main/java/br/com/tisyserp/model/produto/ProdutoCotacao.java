@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -25,10 +26,12 @@ public class ProdutoCotacao  extends PanacheEntityBase {
 	public Integer prco_id;
 	
 	@JoinColumn(name = "prco_prod_id", referencedColumnName = "prod_id")  // Codigo dos itens da receita codigo fiho
-	public Produto prod_id;
+	@ManyToOne
+	public Produto prco_prod_id;
 
 	@JoinColumn(name = "prco_parc_id", referencedColumnName = "parc_id")  // Codigo dos itens da receita codigo fiho
-	public Parceiro parc_id;
+	@ManyToOne
+	public Parceiro prco_parc_id;
 
 	@NotNull
 	@Size(max = 1)

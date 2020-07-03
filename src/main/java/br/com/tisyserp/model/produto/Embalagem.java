@@ -1,8 +1,5 @@
 package br.com.tisyserp.model.produto;
 
-
-
-import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,12 +12,10 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
 @Table(name = "embalagem")
-
 public class Embalagem  extends PanacheEntityBase {
 
 	public static final Long serialVersionUID = 1L;
 	@Id
-	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer emba_id;
 
