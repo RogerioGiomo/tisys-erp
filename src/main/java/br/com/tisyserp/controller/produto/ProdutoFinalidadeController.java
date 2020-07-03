@@ -4,6 +4,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -43,7 +44,7 @@ public class ProdutoFinalidadeController {
 		return resp;
 	}
 
-	@POST
+	@POST  @Transactional
     public @Valid ProdutoFinalidade create(@Valid final ProdutoFinalidade ProdutoFinalidade) {
 		ProdutoFinalidadeRepo.persist(ProdutoFinalidade);
 	    return ProdutoFinalidade;

@@ -1,7 +1,5 @@
 package br.com.tisyserp.model.produto;
 
-
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
