@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import br.com.tisyserp.model.TabelaAuxiliar.Empresa;
+import br.com.tisyserp.model.tabelaauxiliar.Empresa;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity

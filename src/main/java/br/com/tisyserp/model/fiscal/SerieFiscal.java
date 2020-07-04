@@ -1,24 +1,27 @@
 package br.com.tisyserp.model.fiscal;
 
-
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
-
+@Entity
+@Table(name = "serie_fiscal")
 public class SerieFiscal extends PanacheEntityBase {
 
 	public static final Long serialVersionUID = 1L;
 	@Id
-	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer serfis_id;
 	
 	@JoinColumn(name = "serfis_modFis_id", referencedColumnName = "modfis_id")
+	@ManyToOne
 	public ModeloFiscal modfis_id;
 	
 	@NotNull
@@ -27,7 +30,7 @@ public class SerieFiscal extends PanacheEntityBase {
 
 	@NotNull
 	@Size(max = 4)
-	public String serfis_serie;  // serie da nota fiscal  001, 002....
+	public String serfis_serie;  // serie da nota fiscal  001, 002...
 	
 	@NotNull
 	@Size(max = 1)
@@ -40,7 +43,6 @@ public class SerieFiscal extends PanacheEntityBase {
 	@NotNull
 	@Size(max = 1)
 	public String serfis_status;  // ativo / inativo
-
 
 }
 

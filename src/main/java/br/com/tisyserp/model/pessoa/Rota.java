@@ -12,7 +12,6 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
 @Table(name = "rota")
-
 public class Rota extends PanacheEntityBase {
 	
 	public static final Long serialVersionUID = 1L;

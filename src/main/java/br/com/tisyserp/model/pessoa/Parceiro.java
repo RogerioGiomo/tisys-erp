@@ -18,9 +18,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import br.com.tisyserp.model.TabelaAuxiliar.Regiao;
-import br.com.tisyserp.model.TabelaAuxiliar.Status;
-import br.com.tisyserp.model.TabelaAuxiliar.TipoPessoa;
+import br.com.tisyserp.model.tabelaauxiliar.Regiao;
+import br.com.tisyserp.model.tabelaauxiliar.Status;
+import br.com.tisyserp.model.tabelaauxiliar.TipoPessoa;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity

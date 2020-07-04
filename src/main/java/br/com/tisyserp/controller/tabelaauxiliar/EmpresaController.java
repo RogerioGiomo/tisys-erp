@@ -14,7 +14,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.tisyserp.model.TabelaAuxiliar.Empresa;
+import br.com.tisyserp.model.tabelaauxiliar.Empresa;
 import br.com.tisyserp.repository.tabelaauxiliar.EmpresaRepository;
 
 @Path("/Empresa")

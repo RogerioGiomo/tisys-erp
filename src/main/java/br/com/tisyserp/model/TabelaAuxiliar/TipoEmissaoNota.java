@@ -1,30 +1,28 @@
-package br.com.tisyserp.model.pessoa;
-
+package br.com.tisyserp.model.tabelaauxiliar;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
-@Table(name = "parceiro_rede")   // rede de clientes
-public class ParceiroRede extends PanacheEntityBase {
-	
+@Table(name = "tipo_emissao_nota")
+public class TipoEmissaoNota extends PanacheEntityBase  {
+
 	public static final Long serialVersionUID = 1L;
+	
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer pare_id;
+	public Integer tiemno_id;
 	
-	public String pare_desc;
-	
-	@JoinColumn(name = "pare_parc_id", referencedColumnName = "parc_id")
-	@ManyToOne
-	public Parceiro pare_parc_id;
-	
+	@NotNull
+	@Size(max = 60)
+	public String tiemno_desc;
+
 }

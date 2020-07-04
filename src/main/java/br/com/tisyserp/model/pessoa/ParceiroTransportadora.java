@@ -16,7 +16,6 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
 @Table(name = "parceiro_transportadora")
-
 public class ParceiroTransportadora extends PanacheEntityBase {
 	
 	public static final Long serialVersionUID = 1L;

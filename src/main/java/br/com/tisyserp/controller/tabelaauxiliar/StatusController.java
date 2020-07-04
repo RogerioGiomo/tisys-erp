@@ -14,7 +14,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.tisyserp.model.TabelaAuxiliar.Status;
+import br.com.tisyserp.model.tabelaauxiliar.Status;
 import br.com.tisyserp.repository.tabelaauxiliar.StatusRepository;
 
 @Path("/Status")

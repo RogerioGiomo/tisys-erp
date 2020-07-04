@@ -1,4 +1,4 @@
-package br.com.tisyserp.model.tabelaauxiliar;
+package br.com.tisyserp.model.veiculo;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -12,27 +12,18 @@ import javax.validation.constraints.Size;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
-@Table(name = "CFOP")
+@Table(name = "veiculo_modelo")
 
-public class Cfop extends PanacheEntityBase  {
+public class VeiculoModelo extends PanacheEntityBase  {
 	
-	public static final Long serialVersionUID = 1L;
+	public static final long serialVersionUID = 1L;
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer cfop_id;
+	public Long veimod_id;
 	
 	@NotNull
-	@Size(max = 4)
-	public String cfop_codi;
-
-	@NotNull
-	@Size(max = 500)
-	public String cfop_desc;
-
-	@NotNull
-	@Size(max = 200)
-	public String cfop_desc_redu;
-
+	@Size(max = 60)
+	public String veimod_desc;
 	
 }

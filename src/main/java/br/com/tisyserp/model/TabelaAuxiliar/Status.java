@@ -1,4 +1,4 @@
-package br.com.tisyserp.model.TabelaAuxiliar;
+package br.com.tisyserp.model.tabelaauxiliar;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;

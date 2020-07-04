@@ -14,7 +14,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.tisyserp.model.TabelaAuxiliar.TabelaPreco;
+import br.com.tisyserp.model.tabelaauxiliar.TabelaPreco;
 import br.com.tisyserp.repository.tabelaauxiliar.TabelaPrecoRepository;
 
 @Path("/TabelaPreco")

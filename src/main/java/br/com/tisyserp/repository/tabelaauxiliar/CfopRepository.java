@@ -2,7 +2,7 @@ package br.com.tisyserp.repository.tabelaauxiliar;
 
 import javax.enterprise.context.ApplicationScoped;
 
-import br.com.tisyserp.model.TabelaAuxiliar.Cfop;
+import br.com.tisyserp.model.tabelaauxiliar.Cfop;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 
 @ApplicationScoped
