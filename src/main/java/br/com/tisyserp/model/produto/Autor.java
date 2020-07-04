@@ -19,7 +19,7 @@ public class Autor  extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer autor_id;
+	public Long autor_id;
 	
 	@NotNull
 	@Size(max = 60)

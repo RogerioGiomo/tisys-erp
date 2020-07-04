@@ -37,7 +37,7 @@ public class BancoController {
 	@Produces(value = MediaType.APPLICATION_JSON)
 	public Banco getUF(@PathParam("id") final Integer id) throws NoResultException {
 
-		final Banco resp = BancoRepo.findById(id);
+		final Banco resp = Banco.findById(id);
 		if (resp == null) {
 			throw new NoResultException("Banco - não encontrado - id: " + id);
 		}

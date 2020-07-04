@@ -13,9 +13,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import br.com.tisyserp.model.produto.Autor;
-import br.com.tisyserp.repository.produto.AutorRepository;
 
 @Path("/Autor")
 @ApplicationScoped
@@ -26,28 +26,24 @@ public class AutorController {
 	String sql  = "";
 
     @Inject
-	public
-    AutorRepository AutorRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Autor getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Response getUF(@PathParam("id") Long id) throws NoResultException {
 
-		final Autor resp = AutorRepo.findById(id);
+		Autor resp = Autor.findById(id);
 		if (resp == null) {
 			throw new NoResultException("Autor - não encontrado - id: " + id);
 		}
-		return resp;
+		return Response.ok(resp).build();
 	}
 
 	@POST  
 	@Transactional
     public @Valid Autor create(@Valid final Autor autor) {
-		AutorRepo.persist(autor);
+		Autor.persist(autor);
 	    return autor;
     }
 }
