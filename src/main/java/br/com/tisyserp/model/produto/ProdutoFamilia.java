@@ -20,7 +20,7 @@ public class ProdutoFamilia  extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer fami_id;
+	public Long fami_id;
 	
 	@NotNull
 	@Size(max = 60)

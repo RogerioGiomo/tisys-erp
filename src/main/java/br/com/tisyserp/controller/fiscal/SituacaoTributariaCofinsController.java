@@ -35,7 +35,7 @@ public class SituacaoTributariaCofinsController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public SituacaoTributariaCofins getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public SituacaoTributariaCofins getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final SituacaoTributariaCofins resp = Repo.findById(id);
 		if (resp == null) {

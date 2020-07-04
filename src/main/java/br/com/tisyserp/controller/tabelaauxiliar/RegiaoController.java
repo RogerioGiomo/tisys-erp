@@ -35,7 +35,7 @@ public class RegiaoController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Regiao getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Regiao getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Regiao resp = RegiaoRepo.findById(id);
 		if (resp == null) {

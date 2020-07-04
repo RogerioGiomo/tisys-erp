@@ -17,7 +17,7 @@ public class Embalagem  extends PanacheEntityBase {
 	public static final Long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer emba_id;
+	public Long emba_id;
 
 	@NotNull
 	@Size(max = 60)

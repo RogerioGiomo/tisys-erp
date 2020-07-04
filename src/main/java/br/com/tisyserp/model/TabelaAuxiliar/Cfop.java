@@ -20,7 +20,7 @@ public class Cfop extends PanacheEntityBase  {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer cfop_id;
+	public Long cfop_id;
 	
 	@NotNull
 	@Size(max = 4)

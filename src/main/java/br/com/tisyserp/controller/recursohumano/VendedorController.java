@@ -35,7 +35,7 @@ public class VendedorController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Vendedor getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Vendedor getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Vendedor resp = VendedorRepo.findById(id);
 		if (resp == null) {

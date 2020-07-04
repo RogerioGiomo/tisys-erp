@@ -35,7 +35,7 @@ public class CargoController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Cargo getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Cargo getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Cargo resp = CargoRepo.findById(id);
 		if (resp == null) {

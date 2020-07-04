@@ -35,7 +35,7 @@ public class SerieFiscalController  {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public SerieFiscal getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public SerieFiscal getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final SerieFiscal resp = Repo.findById(id);
 		if (resp == null) {

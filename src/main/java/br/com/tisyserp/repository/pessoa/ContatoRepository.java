@@ -6,6 +6,6 @@ import br.com.tisyserp.model.pessoa.Contato;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 
 @ApplicationScoped
-public class ContatoRepository implements  PanacheRepositoryBase<Contato, Integer> {
+public class ContatoRepository implements  PanacheRepositoryBase<Contato, Long> {
 
 }

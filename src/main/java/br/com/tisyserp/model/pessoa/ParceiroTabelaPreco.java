@@ -23,13 +23,13 @@ public class ParceiroTabelaPreco extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer ptabpr_id;
+	public Long ptabpr_id;
 	
 	@JoinColumn(name = "ptabpr_empr_id", referencedColumnName = "empr_id")
 	@OneToOne
 	public Empresa empr_id;
 
-	public Integer ptabpr_prod_id;
+	public Long ptabpr_prod_id;
 	// @JoinColumn(name = "ptabpr_prod_id", referencedColumnName = "prod_id")  // Codigo dos itens da receita codigo fiho
 	// public Produto ptabpr_prod_id;
 

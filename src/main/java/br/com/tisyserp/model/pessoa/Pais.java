@@ -21,7 +21,7 @@ public class Pais extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer pais_id;
+	public Long pais_id;
 
 	@Size(max = 120)
 	public String pais_desc;

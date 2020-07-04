@@ -23,7 +23,7 @@ public class Fabricante  extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer fabr_id;
+	public Long fabr_id;
 	
 	@NotNull
 	@Size(max = 60)

@@ -25,10 +25,10 @@ public  class PedidoItem extends PanacheEntityBase {
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	public  Integer pdit_ID;
+	public  Long pdit_ID;
 
 	@NotNull
-	public  Integer pdit_PEDI;
+	public  Long pdit_PEDI;
 
 	@NotNull
 	@Size(max = 10) 
@@ -77,7 +77,7 @@ public  class PedidoItem extends PanacheEntityBase {
 
 	public  BigDecimal pdit_desc_pedi;  // desconto oferecido no pedido 
 	
-	public  Integer pdit_empr_id;   /// codigo da empresa
+	public  Long pdit_empr_id;   /// codigo da empresa
 
 	public  BigDecimal pdit_base_ipi; 
 	
@@ -87,11 +87,11 @@ public  class PedidoItem extends PanacheEntityBase {
 	
 	public  BigDecimal pdit_VALO_SUBS_TRIB;
 	
-	public  Integer pdit_cfop_codi;
+	public  Long pdit_cfop_codi;
 
 	public  BigDecimal pdit_prod_medi_valo;
 
-	public  Integer pdit_aliq_ipi;
+	public  Long pdit_aliq_ipi;
 
 	public  BigDecimal pdit_base_pis;
 
@@ -117,7 +117,7 @@ public  class PedidoItem extends PanacheEntityBase {
 
 	public  BigDecimal pdit_aliq_cofins;
 
-	public  Integer pdit_aliq_fcp;
+	public  Long pdit_aliq_fcp;
 
 	public  BigDecimal pdit_valor_fcp;
 

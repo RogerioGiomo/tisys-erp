@@ -22,7 +22,7 @@ public class ParceiroFinanceiro extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer pafi_id;
+	public Long pafi_id;
 
 	@Size(max = 4)
 	public String pafi_desc;  // BRS,BRD,ITA IDENTIFICA O BANCO 

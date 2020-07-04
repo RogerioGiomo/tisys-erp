@@ -19,7 +19,7 @@ public class VeiculoTipoFrete extends PanacheEntityBase  {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer veitif_id;
+	public Long veitif_id;
 	
 	@NotNull
 	@Size(max = 60)

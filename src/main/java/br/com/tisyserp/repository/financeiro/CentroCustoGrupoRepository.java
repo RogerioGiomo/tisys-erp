@@ -6,6 +6,6 @@ import br.com.tisyserp.model.financeiro.CentroCustoGrupo;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 
 @ApplicationScoped
-public class CentroCustoGrupoRepository implements  PanacheRepositoryBase<CentroCustoGrupo, Integer> {
+public class CentroCustoGrupoRepository implements  PanacheRepositoryBase<CentroCustoGrupo, Long> {
 
 }

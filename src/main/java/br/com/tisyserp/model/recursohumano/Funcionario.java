@@ -22,9 +22,9 @@ public class Funcionario extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer func_id;
+	public Long func_id;
 
-	public Integer func_parc_id;
+	public Long func_parc_id;
 
 	@NotNull
 	@Size(max = 10)

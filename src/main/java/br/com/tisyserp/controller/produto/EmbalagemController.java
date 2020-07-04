@@ -35,7 +35,7 @@ public class EmbalagemController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Embalagem getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Embalagem getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Embalagem resp = EmbalagemRepo.findById(id);
 		if (resp == null) {

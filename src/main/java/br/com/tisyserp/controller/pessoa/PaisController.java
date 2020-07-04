@@ -35,7 +35,7 @@ public class PaisController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Pais getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Pais getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Pais resp = PaisRepo.findById(id);
 		if (resp == null) {

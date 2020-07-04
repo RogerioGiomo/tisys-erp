@@ -35,7 +35,7 @@ public class FuncionarioController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Funcionario getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Funcionario getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Funcionario resp = FuncionarioRepo.findById(id);
 		if (resp == null) {

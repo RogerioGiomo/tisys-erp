@@ -35,7 +35,7 @@ public class EditoraController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Editora getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Editora getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Editora resp = EditoraRepo.findById(id);
 		if (resp == null) {

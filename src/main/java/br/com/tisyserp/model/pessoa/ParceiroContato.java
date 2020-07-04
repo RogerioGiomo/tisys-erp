@@ -23,7 +23,7 @@ public class ParceiroContato extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer paco_id;
+	public Long paco_id;
 
 	@Size(max = 60)
 	public String paco_desc;
@@ -37,7 +37,7 @@ public class ParceiroContato extends PanacheEntityBase {
 	@Size(max = 16)
 	public String paco_tipo_email;
 
-	public Integer paco_parc_id;
+	public Long paco_parc_id;
 	
 	@JsonbTransient
 	@ManyToOne

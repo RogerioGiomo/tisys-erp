@@ -21,7 +21,7 @@ public class UnidadeMedida  extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer unme_id;
+	public Long unme_id;
 	
 	@NotNull
 	@Size(max = 10)

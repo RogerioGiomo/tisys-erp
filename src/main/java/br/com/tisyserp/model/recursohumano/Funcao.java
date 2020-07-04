@@ -20,7 +20,7 @@ public class Funcao extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer func_id;
+	public Long func_id;
 	
 	@NotNull
 	@Size(max = 60)

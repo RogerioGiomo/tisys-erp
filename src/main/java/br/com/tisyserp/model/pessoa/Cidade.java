@@ -23,7 +23,7 @@ public class Cidade extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer cida_id;
+	public Long cida_id;
 
 	@Size(max = 2)
 	public String cida_uf;

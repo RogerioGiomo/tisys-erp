@@ -23,7 +23,7 @@ public class ProdutoCotacao  extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer prco_id;
+	public Long prco_id;
 	
 	@JoinColumn(name = "prco_prod_id", referencedColumnName = "prod_id")  // Codigo dos itens da receita codigo fiho
 	@ManyToOne

@@ -22,7 +22,7 @@ public class ProdutoFinalidade  extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer prfin_id;
+	public Long prfin_id;
 
 	@NotNull
 	@Size(max = 1)

@@ -35,7 +35,7 @@ public class FichaTecnicaController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public FichaTecnica getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public FichaTecnica getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final FichaTecnica resp = FichaTecnicaRepo.findById(id);
 		if (resp == null) {

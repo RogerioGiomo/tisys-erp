@@ -6,6 +6,6 @@ import br.com.tisyserp.model.fiscal.SituacaoTributaria;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 
 @ApplicationScoped
-public class SituacaoTributariaRepository implements  PanacheRepositoryBase<SituacaoTributaria, Integer> {
+public class SituacaoTributariaRepository implements  PanacheRepositoryBase<SituacaoTributaria, Long> {
     
 }

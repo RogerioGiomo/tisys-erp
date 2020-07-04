@@ -21,7 +21,7 @@ public class Contato extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer cont_id;
+	public Long cont_id;
 
 	@Size(max = 10)
 	public String cont_tipo_telefone;
@@ -84,11 +84,11 @@ public class Contato extends PanacheEntityBase {
 		return true;
 	}
 
-	public Integer getCont_id() {
+	public Long getCont_id() {
 		return cont_id;
 	}
 
-	public void setCont_id(Integer cont_id) {
+	public void setCont_id(Long cont_id) {
 		this.cont_id = cont_id;
 	}
 

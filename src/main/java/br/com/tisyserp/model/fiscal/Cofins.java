@@ -18,7 +18,7 @@ public class Cofins extends PanacheEntityBase {
 	public static final Long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer cofi_id;
+	public Long cofi_id;
 	
 	@NotNull
 	public BigDecimal cofi_aliq;

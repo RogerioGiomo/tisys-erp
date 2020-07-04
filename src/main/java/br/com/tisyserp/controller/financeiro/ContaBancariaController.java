@@ -35,7 +35,7 @@ public class ContaBancariaController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Banco getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Banco getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Banco resp = BancoRepo.findById(id);
 		if (resp == null) {

@@ -35,7 +35,7 @@ public class RotaController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Rota getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Rota getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Rota resp = RotaRepo.findById(id);
 		if (resp == null) {

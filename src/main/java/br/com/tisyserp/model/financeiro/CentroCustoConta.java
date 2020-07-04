@@ -22,7 +22,7 @@ public class CentroCustoConta extends PanacheEntityBase  {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer cecon_id;
+	public Long cecon_id;
 	
 	@NotNull
 	@Size(max = 4)

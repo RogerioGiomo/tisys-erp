@@ -21,7 +21,7 @@ public class ProdutoSpedTipo  extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer tiprs_id;
+	public Long tiprs_id;
 
 	@NotNull
 	@Size(max = 2)

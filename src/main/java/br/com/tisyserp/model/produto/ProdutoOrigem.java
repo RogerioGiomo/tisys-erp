@@ -20,7 +20,7 @@ public class ProdutoOrigem  extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer pror_id;
+	public Long pror_id;
 
 	@NotNull
 	@Size(max = 60)

@@ -35,7 +35,7 @@ public class DescricaoTecnicaController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public DescricaoTecnica getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public DescricaoTecnica getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final DescricaoTecnica resp = DescricaoTecnicaRepo.findById(id);
 		if (resp == null) {

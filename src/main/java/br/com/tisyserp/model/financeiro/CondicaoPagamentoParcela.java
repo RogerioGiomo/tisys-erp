@@ -21,13 +21,13 @@ public class  CondicaoPagamentoParcela extends PanacheEntityBase  {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer copp_id;
+	public Long copp_id;
 
 	@NotNull
-	public Integer copp_nume_parc;
+	public Long copp_nume_parc;
 
 	@NotNull
-	public Integer copp_nume_dias_parc;
+	public Long copp_nume_dias_parc;
 	
 	@NotNull
 	public Double copp_perc_parc;  // percentual da parcela 

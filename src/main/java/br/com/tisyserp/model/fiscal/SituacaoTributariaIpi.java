@@ -18,7 +18,7 @@ public class SituacaoTributariaIpi extends PanacheEntityBase {
 	public static final Long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer sitipi_id;
+	public Long sitipi_id;
 	
 	@NotNull
 	@Size(max = 2)

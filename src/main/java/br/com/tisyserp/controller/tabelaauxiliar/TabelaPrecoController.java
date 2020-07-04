@@ -35,7 +35,7 @@ public class TabelaPrecoController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public TabelaPreco getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public TabelaPreco getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final TabelaPreco resp = TabelaPrecoRepo.findById(id);
 		if (resp == null) {

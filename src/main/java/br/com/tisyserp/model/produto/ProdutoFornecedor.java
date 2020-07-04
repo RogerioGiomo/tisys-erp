@@ -23,7 +23,7 @@ public class ProdutoFornecedor  extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer prfo_id;
+	public Long prfo_id;
 	
 	@NotNull
 	@Size(max = 120)

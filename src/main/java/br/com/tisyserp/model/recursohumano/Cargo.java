@@ -20,7 +20,7 @@ public class Cargo extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer carg_id;
+	public Long carg_id;
 	
 	@NotNull
 	@Size(max = 60)

@@ -27,7 +27,7 @@ public class ContaBancaria extends PanacheEntityBase  {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer coba_id;
+	public Long coba_id;
 	
 	@JoinColumn(name = "coba_empr_id", referencedColumnName = "empr_id")
 	@OneToOne
@@ -80,7 +80,7 @@ public class ContaBancaria extends PanacheEntityBase  {
 	public Double coba_multa;
 	
 	@NotNull
-	public Integer coba_prox_bole;
+	public Long coba_prox_bole;
 	
 	@Size(max = 10)
 	public String coba_carteira_banco;  // codigo da carteira para o cnab

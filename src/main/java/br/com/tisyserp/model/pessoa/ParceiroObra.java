@@ -23,7 +23,7 @@ public class ParceiroObra extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer paob_id;
+	public Long paob_id;
 
 	@NotNull
 	@Size(max = 60)
@@ -47,7 +47,7 @@ public class ParceiroObra extends PanacheEntityBase {
 	@Size(max = 9)
 	public String paob_cep;
 
-	public Integer paob_parc_id;
+	public Long paob_parc_id;
 
 	@JoinColumn(name = "paob_pais_id", referencedColumnName = "pais_id")
 	@OneToOne

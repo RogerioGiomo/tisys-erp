@@ -21,7 +21,7 @@ public class RamoAtividade extends PanacheEntityBase  {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer tamo_id;
+	public Long tamo_id;
 
 	@Size(max = 20)
 	public String ramo_desc;  

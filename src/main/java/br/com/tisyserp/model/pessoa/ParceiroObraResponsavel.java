@@ -20,13 +20,13 @@ public class ParceiroObraResponsavel extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer pare_id;
+	public Long pare_id;
 
 	@NotNull
 	@Size(max = 60)
 	public String pare_desc;   /// Nome do Resposanvel / o mesmo cadastrado no parceiro
 	
-	public Integer pare_paob_id;
+	public Long pare_paob_id;
 
 	// @JoinColumn(name = "pare_paob_id", referencedColumnName = "paob_id")
 	// @OneToOne

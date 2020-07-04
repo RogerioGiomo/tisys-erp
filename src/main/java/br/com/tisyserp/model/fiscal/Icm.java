@@ -20,7 +20,7 @@ public class Icm extends PanacheEntityBase {
 	public static final Long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer icm_id;
+	public Long icm_id;
 	
 	@NotNull
 	public double icm_aliq;

@@ -29,7 +29,7 @@ public class ParceiroEndereco extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer paen_id;
+	public Long paen_id;
 	@Size(max = 120)
 	public String paen_logr;
 	@Size(max = 60)
@@ -46,10 +46,10 @@ public class ParceiroEndereco extends PanacheEntityBase {
 	@Size(max = 9)
 	public String paen_cep;
 	
-	public Integer paen_parc_id;
+	public Long paen_parc_id;
 	// @Size(max = 4)
 
-	// public Integer paen_pais_id;
+	// public Long paen_pais_id;
 	@JoinColumn(name = "paen_pais_id", referencedColumnName = "pais_id")
 	@OneToOne
 	public Pais paen_pais_id;

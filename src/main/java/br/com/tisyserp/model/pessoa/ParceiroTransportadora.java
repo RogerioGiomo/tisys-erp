@@ -22,7 +22,7 @@ public class ParceiroTransportadora extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer patr_id;
+	public Long patr_id;
 
 	@JoinColumn(name = "patr_parc_id", referencedColumnName = "parc_id")
 	@ManyToOne

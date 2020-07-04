@@ -35,7 +35,7 @@ public class ParceiroEnderecoController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public ParceiroEndereco getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public ParceiroEndereco getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final ParceiroEndereco resp = ParceiroEnderecoRepo.findById(id);
 		if (resp == null) {

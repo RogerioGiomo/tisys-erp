@@ -35,7 +35,7 @@ public class InstrumentoController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Instrumento getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Instrumento getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Instrumento resp = InstrumentoRepo.findById(id);
 		if (resp == null) {

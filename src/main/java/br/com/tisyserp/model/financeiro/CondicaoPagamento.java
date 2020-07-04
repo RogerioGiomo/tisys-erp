@@ -22,7 +22,7 @@ public class CondicaoPagamento extends PanacheEntityBase  {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer copa_id;
+	public Long copa_id;
 
 	@NotNull
 	@Size(max = 4)
@@ -34,16 +34,16 @@ public class CondicaoPagamento extends PanacheEntityBase  {
 
 	@NotNull
 	@Size(max = 3)
-	public Integer copa_parc;
+	public Long copa_parc;
 	
 	@NotNull
 	public Double copa_acre_parc;  // juros sobre o valor do parcelamento
 
 	@NotNull
-	public Integer copa_praz_medi; // prazo medio ((10-20-30) / 3 = 20 dias
+	public Long copa_praz_medi; // prazo medio ((10-20-30) / 3 = 20 dias
 	
 	@NotNull
-	public Integer copa_dia_paga_acont; // 1o dia do pagamento acontece em (periodicidade)
+	public Long copa_dia_paga_acont; // 1o dia do pagamento acontece em (periodicidade)
 
 	@NotNull
 	@Size(max = 1)

@@ -22,7 +22,7 @@ public class Instrumento  extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer instr_id;
+	public Long instr_id;
 	
 	@NotNull
 	@Size(max = 60)

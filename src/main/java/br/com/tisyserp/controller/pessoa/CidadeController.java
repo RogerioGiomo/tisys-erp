@@ -35,7 +35,7 @@ public class CidadeController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Cidade getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Cidade getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Cidade resp = CidadeRepo.findById(id);
 		if (resp == null) {

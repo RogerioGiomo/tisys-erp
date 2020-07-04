@@ -35,7 +35,7 @@ public class ProdutoFotoController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public ProdutoFoto getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public ProdutoFoto getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final ProdutoFoto resp = ProdutoFotoRepo.findById(id);
 		if (resp == null) {

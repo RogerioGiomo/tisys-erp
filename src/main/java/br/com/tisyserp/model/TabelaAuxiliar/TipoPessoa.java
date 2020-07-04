@@ -22,17 +22,17 @@ public class TipoPessoa extends PanacheEntityBase  {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer tipe_id;
+	public Long tipe_id;
 	
 	@NotNull
 	@Size(max = 60)
 	public String tipe_desc;
 
-	public Integer getTipe_id() {
+	public Long getTipe_id() {
 		return tipe_id;
 	}
 
-	public void setTipe_id(Integer tipe_id) {
+	public void setTipe_id(Long tipe_id) {
 		this.tipe_id = tipe_id;
 	}
 

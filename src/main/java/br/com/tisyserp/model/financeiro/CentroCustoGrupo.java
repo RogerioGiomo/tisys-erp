@@ -22,7 +22,7 @@ public class CentroCustoGrupo extends PanacheEntityBase  {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer ccgr_id;
+	public Long ccgr_id;
 	
 	@NotNull
 	@Size(max = 4)

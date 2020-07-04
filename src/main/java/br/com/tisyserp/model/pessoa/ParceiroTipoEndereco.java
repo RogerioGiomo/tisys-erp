@@ -24,7 +24,7 @@ public class ParceiroTipoEndereco extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer pate_id;
+	public Long pate_id;
 	
 	@Size(max = 20)
 	public String pate_desc;

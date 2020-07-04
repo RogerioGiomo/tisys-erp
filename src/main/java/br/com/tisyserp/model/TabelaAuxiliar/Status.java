@@ -19,17 +19,17 @@ public class Status extends PanacheEntityBase  {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer stat_id;
+	public Long stat_id;
 	
 	@NotNull
 	@Size(max = 60)
 	public String stat_desc;
 
-	public Integer getStat_id() {
+	public Long getStat_id() {
 		return stat_id;
 	}
 
-	public void setStat_id(Integer stat_id) {
+	public void setStat_id(Long stat_id) {
 		this.stat_id = stat_id;
 	}
 

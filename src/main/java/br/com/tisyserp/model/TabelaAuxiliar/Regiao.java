@@ -22,17 +22,17 @@ public class Regiao extends PanacheEntityBase  {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer regi_id;
+	public Long regi_id;
 	
 	@NotNull
 	@Size(max = 60)
 	public String regi_desc;
 
-	public Integer getRegi_id() {
+	public Long getRegi_id() {
 		return regi_id;
 	}
 
-	public void setRegi_id(Integer regi_id) {
+	public void setRegi_id(Long regi_id) {
 		this.regi_id = regi_id;
 	}
 

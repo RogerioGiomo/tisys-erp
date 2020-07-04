@@ -35,7 +35,7 @@ public class UnidadeMedidaController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public UnidadeMedida getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public UnidadeMedida getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final UnidadeMedida resp = UnidadeMedidaRepo.findById(id);
 		if (resp == null) {

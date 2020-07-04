@@ -20,13 +20,13 @@ public class DescricaoTecnica  extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer destec_id;
+	public Long destec_id;
 	
 	@NotNull
 	@Size(max = 120)
 	public String destec_desc;
 
-	public Integer destec_prod_id;
+	public Long destec_prod_id;
 	// @JoinColumn(name = "destec_prod_id", referencedColumnName = "prod_id")  // Codigo dos itens da receita codigo fiho
 	// public Produto prod_id;
 	

@@ -22,7 +22,7 @@ public class SituacaoTributaria extends PanacheEntityBase {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer sitr_id;
+	public Long sitr_id;
 	
 	@NotNull
 	@Size(max = 2)

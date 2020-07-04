@@ -18,7 +18,7 @@ public class Assunto  extends PanacheEntityBase {
 	public static final Long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Integer assun_id;
+	public Long assun_id;
 	
 	@NotNull
 	@Size(max = 60)

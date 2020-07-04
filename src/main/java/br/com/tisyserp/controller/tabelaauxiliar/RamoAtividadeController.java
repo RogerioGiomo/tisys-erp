@@ -35,7 +35,7 @@ public class RamoAtividadeController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public RamoAtividade getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public RamoAtividade getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final RamoAtividade resp = RamoAtividadeRepo.findById(id);
 		if (resp == null) {

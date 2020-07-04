@@ -6,6 +6,6 @@ import br.com.tisyserp.model.pessoa.ParceiroEndereco;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 
 @ApplicationScoped
-public class ParceiroEnderecoRepository implements  PanacheRepositoryBase<ParceiroEndereco, Integer> {
+public class ParceiroEnderecoRepository implements  PanacheRepositoryBase<ParceiroEndereco, Long> {
 
 }

@@ -35,7 +35,7 @@ public class IpiController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Ipi getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Ipi getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Ipi resp = Repo.findById(id);
 		if (resp == null) {

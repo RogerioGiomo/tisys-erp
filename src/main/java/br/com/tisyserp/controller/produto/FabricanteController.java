@@ -35,7 +35,7 @@ public class FabricanteController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Fabricante getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Fabricante getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Fabricante resp = FabricanteRepo.findById(id);
 		if (resp == null) {

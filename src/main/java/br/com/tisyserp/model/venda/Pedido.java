@@ -254,7 +254,7 @@ public class Pedido extends PanacheEntityBase {
 	public Double pedi_peso_brut;
 
 	@NotNull
-	public Integer pedi_quantidade;
+	public Long pedi_quantidade;
 	
 	@NotNull
 	@Size(max = 1)

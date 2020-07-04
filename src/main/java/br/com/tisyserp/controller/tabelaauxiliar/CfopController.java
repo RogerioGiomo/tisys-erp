@@ -35,7 +35,7 @@ public class CfopController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Cfop getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Cfop getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Cfop resp = CfopRepo.findById(id);
 		if (resp == null) {

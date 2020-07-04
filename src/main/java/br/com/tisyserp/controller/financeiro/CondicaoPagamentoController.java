@@ -35,7 +35,7 @@ public class CondicaoPagamentoController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public CondicaoPagamento getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public CondicaoPagamento getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final CondicaoPagamento resp = Repo.findById(id);
 		if (resp == null) {

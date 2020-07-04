@@ -13,9 +13,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.financeiro.Banco;
-import br.com.tisyserp.repository.financeiro.BancoRepository;
 
 @Path("/banco")
 @ApplicationScoped
@@ -26,28 +28,26 @@ public class BancoController {
 	String sql  = "";
 
     @Inject
-	public
-    BancoRepository BancoRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
 	@Path("/{id}")
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Banco getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Response getId(@PathParam("id") Long id) throws NoResultException {
 
-		final Banco resp = Banco.findById(id);
+		Banco resp = Banco.findById(id);
 		if (resp == null) {
 			throw new NoResultException("Banco - não encontrado - id: " + id);
 		}
-		return resp;
+		return Response.ok(resp).build();
 	}
 
 	@POST  
 	@Transactional
+	@Retry(maxRetries = 4)
     public @Valid Banco create(@Valid final Banco banco) {
-		BancoRepo.persist(banco);
+		Banco.persist(banco);
 	    return banco;
     }
 }

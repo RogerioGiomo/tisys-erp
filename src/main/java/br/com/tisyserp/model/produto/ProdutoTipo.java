@@ -22,17 +22,17 @@ public class ProdutoTipo  extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer tipr_id;
+	public Long tipr_id;
 
 	@NotNull
 	@Size(max = 60)
 	public String tiprs_desc;
 
-	public Integer getTipr_id() {
+	public Long getTipr_id() {
 		return tipr_id;
 	}
 
-	public void setTipr_id(Integer tipr_id) {
+	public void setTipr_id(Long tipr_id) {
 		this.tipr_id = tipr_id;
 	}
 

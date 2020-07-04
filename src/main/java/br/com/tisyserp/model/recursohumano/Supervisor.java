@@ -22,9 +22,9 @@ public class Supervisor extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer supe_id;
+	public Long supe_id;
 	
-	//public Integer supe_func_id;
+	//public Long supe_func_id;
 	@JoinColumn(name = "supe_func_id", referencedColumnName = "func_id" )
 	@OneToOne
 	public Funcionario supe_func_id;

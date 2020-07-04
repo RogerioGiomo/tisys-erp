@@ -20,7 +20,7 @@ public class Banco extends PanacheEntityBase  {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer banc_id;
+	public Long banc_id;
 
 	@NotNull
 	@Size(max = 4)

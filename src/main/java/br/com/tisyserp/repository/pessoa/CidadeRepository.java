@@ -6,6 +6,6 @@ import br.com.tisyserp.model.pessoa.Cidade;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 
 @ApplicationScoped
-public class CidadeRepository implements  PanacheRepositoryBase<Cidade, Integer> {
+public class CidadeRepository implements  PanacheRepositoryBase<Cidade, Long> {
 
 }

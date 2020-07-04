@@ -35,7 +35,7 @@ public class TipoPessoaController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public TipoPessoa getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public TipoPessoa getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final TipoPessoa resp = TipoPessoaRepo.findById(id);
 		if (resp == null) {

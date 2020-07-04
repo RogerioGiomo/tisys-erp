@@ -22,7 +22,7 @@ public class Editora  extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer editora_id;
+	public Long editora_id;
 	
 	@NotNull
 	@Size(max = 60)

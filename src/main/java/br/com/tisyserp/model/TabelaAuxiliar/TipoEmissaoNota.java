@@ -19,7 +19,7 @@ public class TipoEmissaoNota extends PanacheEntityBase  {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer tiemno_id;
+	public Long tiemno_id;
 	
 	@NotNull
 	@Size(max = 60)

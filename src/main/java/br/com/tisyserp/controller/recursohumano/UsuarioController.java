@@ -35,7 +35,7 @@ public class UsuarioController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Usuario getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Usuario getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Usuario resp = UsuarioRepo.findById(id);
 		if (resp == null) {

@@ -19,7 +19,7 @@ public class Pis extends PanacheEntityBase {
 	public static final Long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer pis_id;
+	public Long pis_id;
 	
 	@NotNull
 	public BigDecimal pis_aliq;

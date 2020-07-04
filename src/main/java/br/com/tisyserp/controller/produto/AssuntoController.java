@@ -35,7 +35,7 @@ public class AssuntoController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Assunto getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Assunto getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Assunto resp = AssuntoRepo.findById(id);
 		if (resp == null) {

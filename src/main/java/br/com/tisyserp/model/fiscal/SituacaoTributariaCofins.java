@@ -19,7 +19,7 @@ public class SituacaoTributariaCofins extends PanacheEntityBase {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer sitcofi_id;
+	public Long sitcofi_id;
 	
 	@NotNull
 	@Size(max = 2)

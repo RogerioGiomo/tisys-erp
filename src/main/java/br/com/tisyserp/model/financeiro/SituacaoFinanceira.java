@@ -22,7 +22,7 @@ public class SituacaoFinanceira extends PanacheEntityBase  {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer sifi_id;
+	public Long sifi_id;
 
 	@NotNull
 	@Size(max = 4)

@@ -22,9 +22,9 @@ public class ProdutoFoto  extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer foto_id;
+	public Long foto_id;
 	
-	public Integer foto_prod_id;
+	public Long foto_prod_id;
 	// @JoinColumn(name = "foto_prod_id", referencedColumnName = "prod_id")  
 	// public Produto prod_id;
 

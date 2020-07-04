@@ -36,7 +36,7 @@ public class ModeloFiscalController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public ModeloFiscal getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public ModeloFiscal getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final ModeloFiscal resp = Repo.findById(id);
 		if (resp == null) {

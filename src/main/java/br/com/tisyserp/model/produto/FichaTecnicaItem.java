@@ -22,7 +22,7 @@ public class FichaTecnicaItem  extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer fitei_id;
+	public Long fitei_id;
 	
 	@NotNull
 	@Size(max = 60)

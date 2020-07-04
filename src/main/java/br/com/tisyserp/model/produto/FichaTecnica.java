@@ -21,11 +21,11 @@ public class FichaTecnica  extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer fite_id;
+	public Long fite_id;
 	
 	public String fite_desc;
 	
-//	public Integer fite_prod_id;
+//	public Long fite_prod_id;
 	@JoinColumn(name = "fite_prod_id", referencedColumnName = "prod_id")   //Codigo da Receita , codigo pai    
 	@ManyToOne
 	public Produto fite_prod_id;

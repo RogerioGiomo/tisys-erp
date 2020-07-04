@@ -35,7 +35,7 @@ public class ContatoController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Contato getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Contato getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Contato resp = ContatoRepo.findById(id);
 		if (resp == null) {

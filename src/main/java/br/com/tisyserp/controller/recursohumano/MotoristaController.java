@@ -35,7 +35,7 @@ public class MotoristaController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Motorista getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Motorista getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Motorista resp = MotoristaRepo.findById(id);
 		if (resp == null) {

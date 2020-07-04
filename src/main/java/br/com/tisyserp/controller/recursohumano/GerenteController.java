@@ -35,7 +35,7 @@ public class GerenteController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Gerente getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Gerente getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Gerente resp = GerenteRepo.findById(id);
 		if (resp == null) {

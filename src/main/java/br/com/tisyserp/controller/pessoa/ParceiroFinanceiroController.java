@@ -35,7 +35,7 @@ public class ParceiroFinanceiroController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public ParceiroFinanceiro getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public ParceiroFinanceiro getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final ParceiroFinanceiro resp = ParceiroFinanceiroRepo.findById(id);
 		if (resp == null) {

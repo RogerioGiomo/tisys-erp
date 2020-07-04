@@ -35,7 +35,7 @@ public class ProdutoFinalidadeController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public ProdutoFinalidade getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public ProdutoFinalidade getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final ProdutoFinalidade resp = ProdutoFinalidadeRepo.findById(id);
 		if (resp == null) {

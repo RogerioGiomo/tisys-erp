@@ -18,7 +18,7 @@ public class SerieFiscal extends PanacheEntityBase {
 	public static final Long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer serfis_id;
+	public Long serfis_id;
 	
 	@JoinColumn(name = "serfis_modFis_id", referencedColumnName = "modfis_id")
 	@ManyToOne

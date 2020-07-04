@@ -21,7 +21,7 @@ public class Ipi extends PanacheEntityBase {
 	@Id
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer ipi_id;
+	public Long ipi_id;
 	
 	@NotNull
 	public BigDecimal ipi_aliq;

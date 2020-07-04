@@ -21,7 +21,7 @@ public class Produto  extends PanacheEntityBase {
 	public static final Long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer prod_id;
+	public Long prod_id;
 	
 	@NotNull
 	@Size(max = 20)
@@ -35,7 +35,7 @@ public class Produto  extends PanacheEntityBase {
 	@Size(max = 80)
 	public String prod_desc_redu;
 
-	// public Integer prod_fabr_id;
+	// public Long prod_fabr_id;
 	@JoinColumn(name = "prod_fabr_id", referencedColumnName = "fabr_id")  // Codigo dos itens da receita codigo fiho
 	@ManyToOne
 	public Fabricante prod_fabr_id;
@@ -48,7 +48,7 @@ public class Produto  extends PanacheEntityBase {
 	@ManyToOne
 	public ProdutoFamilia prod_fami_id;
 
-//	public Integer prod_emba_id;
+//	public Long prod_emba_id;
 	@JoinColumn(name = "prod_emba_id", referencedColumnName = "emba_id")  // Codigo dos itens da receita codigo fiho
 	@ManyToOne
 	public Embalagem prod_emba_id;
@@ -140,13 +140,13 @@ public class Produto  extends PanacheEntityBase {
 	public String prod_usua_desc;  // ultimo usuario que fez a alteraçao no cadastro
 
 	@NotNull
-	public Integer prod_dias_entr;  // quantiade de dias que o fornecedor demora para entregar a mercadoria - lead time
+	public Long prod_dias_entr;  // quantiade de dias que o fornecedor demora para entregar a mercadoria - lead time
 
 	@NotNull
-	public Integer prod_dema_media;  // demanda media 
+	public Long prod_dema_media;  // demanda media 
 
 	@NotNull
-	public Integer prod_temp_dema_media;  // demanda media em dias ou meses para calculo da demanda media 
+	public Long prod_temp_dema_media;  // demanda media em dias ou meses para calculo da demanda media 
 
 	@NotNull
 	public String prod_uso_interno;  // informa se o produto é de uso interno, nao é para venda 

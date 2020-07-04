@@ -21,7 +21,7 @@ public class TabelaIbpt  extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer ipbt_id;
+	public Long ipbt_id;
 
 	@NotNull
 	@Size(max = 8)

@@ -22,7 +22,7 @@ public class ProdutoGrupo  extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer grup_id;
+	public Long grup_id;
 	
 	@NotNull
 	@Size(max = 60)

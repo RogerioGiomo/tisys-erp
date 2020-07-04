@@ -13,9 +13,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.financeiro.CentroCustoGrupo;
-import br.com.tisyserp.repository.financeiro.CentroCustoGrupoRepository;
 
 @Path("/centrocustogrupo")
 @ApplicationScoped
@@ -26,28 +27,25 @@ public class CentroCustoGrupoController {
 	String sql  = "";
 
     @Inject
-	public
-    CentroCustoGrupoRepository CentroCustoGrupoRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
 	@Path("/{id}")
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public CentroCustoGrupo getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Response getId(@PathParam("id") Long id) throws NoResultException {
 
-		final CentroCustoGrupo resp = CentroCustoGrupoRepo.findById(id);
+		CentroCustoGrupo resp = CentroCustoGrupo.findById(id);
 		if (resp == null) {
 			throw new NoResultException("CentroCustoGrupo - não encontrado - id: " + id);
 		}
-		return resp;
+		return Response.ok(resp).build();
 	}
 
 	@POST  
 	@Transactional
     public @Valid CentroCustoGrupo create(@Valid final CentroCustoGrupo centrocustogrupo) {
-		CentroCustoGrupoRepo.persist(centrocustogrupo);
+		CentroCustoGrupo.persist(centrocustogrupo);
 	    return centrocustogrupo;
     }
 }

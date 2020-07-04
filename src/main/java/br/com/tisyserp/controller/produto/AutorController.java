@@ -31,7 +31,7 @@ public class AutorController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Response getUF(@PathParam("id") Long id) throws NoResultException {
+	public Response getId(@PathParam("id") Long id) throws NoResultException {
 
 		Autor resp = Autor.findById(id);
 		if (resp == null) {

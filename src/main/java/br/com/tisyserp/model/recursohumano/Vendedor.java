@@ -23,7 +23,7 @@ public class Vendedor extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer vend_id;
+	public Long vend_id;
 
 	@NotNull
 	@Size(max = 120)

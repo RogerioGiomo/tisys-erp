@@ -25,7 +25,7 @@ public class Empresa extends PanacheEntityBase  {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer empr_id;
+	public Long empr_id;
 	
 	@JoinColumn(name = "empe_parc_id", referencedColumnName = "parc_id")
 	@OneToOne

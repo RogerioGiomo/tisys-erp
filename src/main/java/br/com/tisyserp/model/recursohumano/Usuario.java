@@ -22,7 +22,7 @@ public class Usuario extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer usua_id;
+	public Long usua_id;
 	
 	@JoinColumn(name = "usua_func_id", referencedColumnName = "func_id") 
 	@ManyToOne

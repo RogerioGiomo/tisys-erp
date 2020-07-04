@@ -19,7 +19,7 @@ public class ModeloFiscal extends PanacheEntityBase {
 	@Id
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer modfis_id;
+	public Long modfis_id;
 	
 	@NotNull
 	@Size(max = 4)

@@ -23,7 +23,7 @@ public class TabelaPreco extends PanacheEntityBase  {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer tape_id;
+	public Long tape_id;
 
 	@NotNull
 	@Size(max = 20)

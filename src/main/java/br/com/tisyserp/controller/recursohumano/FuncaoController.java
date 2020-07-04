@@ -35,7 +35,7 @@ public class FuncaoController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Funcao getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Funcao getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Funcao resp = FuncaoRepo.findById(id);
 		if (resp == null) {

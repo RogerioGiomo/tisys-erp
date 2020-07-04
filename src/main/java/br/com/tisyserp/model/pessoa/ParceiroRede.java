@@ -19,7 +19,7 @@ public class ParceiroRede extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer pare_id;
+	public Long pare_id;
 	
 	public String pare_desc;
 	

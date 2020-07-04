@@ -32,9 +32,9 @@ public class Parceiro extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer parc_id;
+	public Long parc_id;
 
-	public Integer parc_id_ext;
+	public Long parc_id_ext;
 	
 	@NotNull
 	@Size(max = 120)

@@ -35,7 +35,7 @@ public class CofinsController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Cofins getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Cofins getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Cofins resp = CofinsRepo.findById(id);
 		if (resp == null) {

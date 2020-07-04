@@ -35,7 +35,7 @@ public class EmpresaController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Empresa getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Empresa getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Empresa resp = EmpresaRepo.findById(id);
 		if (resp == null) {

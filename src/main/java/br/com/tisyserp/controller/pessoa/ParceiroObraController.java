@@ -35,7 +35,7 @@ public class ParceiroObraController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public ParceiroObra getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public ParceiroObra getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final ParceiroObra resp = ParceiroObraRepo.findById(id);
 		if (resp == null) {

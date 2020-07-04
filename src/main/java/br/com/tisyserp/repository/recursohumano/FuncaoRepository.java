@@ -6,6 +6,6 @@ import br.com.tisyserp.model.recursohumano.Funcao;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 
 @ApplicationScoped
-public class FuncaoRepository implements  PanacheRepositoryBase<Funcao, Integer> {
+public class FuncaoRepository implements  PanacheRepositoryBase<Funcao, Long> {
 
 }

@@ -22,7 +22,7 @@ public class Gerente extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer gere_id;
+	public Long gere_id;
 	
 	@JoinColumn(name = "gere_func_id", referencedColumnName = "func_id") 
 	@ManyToOne

@@ -6,6 +6,6 @@ import br.com.tisyserp.model.produto.Fabricante;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 
 @ApplicationScoped
-public class FabricanteRepository implements  PanacheRepositoryBase<Fabricante, Integer> {
+public class FabricanteRepository implements  PanacheRepositoryBase<Fabricante, Long> {
 
 }

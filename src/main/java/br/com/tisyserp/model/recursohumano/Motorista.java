@@ -20,7 +20,7 @@ public class Motorista extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer moto_id;
+	public Long moto_id;
 	
 	@NotNull
 	@Size(max = 60)

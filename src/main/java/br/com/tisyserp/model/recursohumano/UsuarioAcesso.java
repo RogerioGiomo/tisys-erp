@@ -25,7 +25,7 @@ public class UsuarioAcesso extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer usac_id;
+	public Long usac_id;
 	
 	@JsonbTransient
 	@JoinColumn(name = "usac_id", referencedColumnName = "usua_id") 

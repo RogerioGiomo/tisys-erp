@@ -35,7 +35,7 @@ public class PisController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Pis getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Pis getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Pis resp = Repo.findById(id);
 		if (resp == null) {

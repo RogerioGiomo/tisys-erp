@@ -35,7 +35,7 @@ public class ParceiroTabelaPrecoController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public ParceiroTabelaPreco getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public ParceiroTabelaPreco getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final ParceiroTabelaPreco resp = ParceiroTabelaPrecoRepo.findById(id);
 		if (resp == null) {

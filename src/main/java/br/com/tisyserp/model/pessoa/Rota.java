@@ -18,7 +18,7 @@ public class Rota extends PanacheEntityBase {
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer rota_id;
+	public Long rota_id;
 	
 	@NotNull
 	@Size(max = 60)

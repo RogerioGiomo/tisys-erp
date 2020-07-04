@@ -35,7 +35,7 @@ public class SupervisorController {
 	@GET
 	@Path("/{id}")
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Supervisor getUF(@PathParam("id") final Integer id) throws NoResultException {
+	public Supervisor getId(@PathParam("id") final Long id) throws NoResultException {
 
 		final Supervisor resp = SupervisorRepo.findById(id);
 		if (resp == null) {
