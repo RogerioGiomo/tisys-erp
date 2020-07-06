@@ -17,7 +17,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 @Table(name = "tipo_pessoa")
 public class TipoPessoa extends PanacheEntityBase  {
 
-	public static final Long serialVersionUID = 1L;
+	public static  Long serialVersionUID = 1L;
 	
 	@Id
 	@Basic(optional = false)
@@ -46,7 +46,7 @@ public class TipoPessoa extends PanacheEntityBase  {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
+		 int prime = 31;
 		int result = 1;
 		result = prime * result + ((tipe_desc == null) ? 0 : tipe_desc.hashCode());
 		result = prime * result + ((tipe_id == null) ? 0 : tipe_id.hashCode());

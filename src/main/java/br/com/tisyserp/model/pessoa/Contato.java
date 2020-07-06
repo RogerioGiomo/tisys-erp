@@ -17,7 +17,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 public class Contato extends PanacheEntityBase {
 
-	public static final Long serialVersionUID = 1L;
+	public static  Long serialVersionUID = 1L;
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +37,7 @@ public class Contato extends PanacheEntityBase {
 	
 	@Override
 	public int hashCode() {
-		final int prime = 31;
+		 int prime = 31;
 		int result = 1;
 		result = prime * result + ((Cont_depto == null) ? 0 : Cont_depto.hashCode());
 		result = prime * result + ((Cont_email == null) ? 0 : Cont_email.hashCode());

@@ -13,11 +13,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.produto.ProdutoCotacao;
-import br.com.tisyserp.repository.produto.ProdutoCotacaoRepository;
 
-@Path("/ProdutoCotacao")
+@Path("/produtocotacao")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -26,27 +28,26 @@ public class ProdutoCotacaoController {
 	String sql  = "";
 
     @Inject
-	public
-    ProdutoCotacaoRepository ProdutoCotacaoRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public ProdutoCotacao getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final ProdutoCotacao resp = ProdutoCotacaoRepo.findById(id);
+		ProdutoCotacao resp = ProdutoCotacao.findById(id);
 		if (resp == null) {
 			throw new NoResultException("ProdutoCotacao - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid ProdutoCotacao create(@Valid final ProdutoCotacao produtoCotacao) {
-		ProdutoCotacaoRepo.persist(produtoCotacao);
+	@POST  
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid ProdutoCotacao create(@Valid  ProdutoCotacao produtoCotacao) {
+		ProdutoCotacao.persist(produtoCotacao);
 	    return produtoCotacao;
     }
 }

@@ -13,40 +13,42 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.produto.ProdutoFinalidade;
-import br.com.tisyserp.repository.produto.ProdutoFinalidadeRepository;
 
-@Path("/ProdutoFinalidade")
+@Path("/produto_finalidade")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+
 public class ProdutoFinalidadeController {
 	
 	String sql  = "";
 
     @Inject
-	public
-    ProdutoFinalidadeRepository ProdutoFinalidadeRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public ProdutoFinalidade getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final ProdutoFinalidade resp = ProdutoFinalidadeRepo.findById(id);
+		 ProdutoFinalidade resp = ProdutoFinalidade.findById(id);
 		if (resp == null) {
-			throw new NoResultException("ProdutoFinalidade - não encontrado - id: " + id);
+			throw new NoResultException("Produtoidade - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid ProdutoFinalidade create(@Valid final ProdutoFinalidade produtoFinalidade) {
-		ProdutoFinalidadeRepo.persist(produtoFinalidade);
-	    return produtoFinalidade;
+	@POST  
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid ProdutoFinalidade create(@Valid  ProdutoFinalidade produtofinalidade) {
+		ProdutoFinalidade.persist(produtofinalidade);
+	    return produtofinalidade;
     }
 }

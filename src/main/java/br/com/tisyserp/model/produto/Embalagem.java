@@ -14,7 +14,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 @Table(name = "embalagem")
 public class Embalagem  extends PanacheEntityBase {
 
-	public static final Long serialVersionUID = 1L;
+	public static  Long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long emba_id;

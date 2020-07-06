@@ -14,10 +14,12 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.tisyserp.model.recursohumano.Usuario;
-import br.com.tisyserp.repository.recursohumano.UsuarioRepository;
+import org.eclipse.microprofile.faulttolerance.Retry;
+import javax.ws.rs.core.Response;
 
-@Path("/Usuario")
+import br.com.tisyserp.model.recursohumano.Usuario;
+
+@Path("/usuario")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -26,27 +28,26 @@ public class UsuarioController {
 	String sql  = "";
 
     @Inject
-	public
-    UsuarioRepository UsuarioRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Usuario getId(@PathParam("id") final Long id) throws NoResultException {
+	public  Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final Usuario resp = UsuarioRepo.findById(id);
+		 Usuario resp = Usuario.findById(id);
 		if (resp == null) {
 			throw new NoResultException("Usuario - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid Usuario create(@Valid final Usuario usuario) {
-		UsuarioRepo.persist(usuario);
+	@POST  
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid Usuario create(@Valid  Usuario usuario) {
+		Usuario.persist(usuario);
 	    return usuario;
     }
 }

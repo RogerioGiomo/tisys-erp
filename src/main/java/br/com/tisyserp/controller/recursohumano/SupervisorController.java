@@ -13,11 +13,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.recursohumano.Supervisor;
-import br.com.tisyserp.repository.recursohumano.SupervisorRepository;
 
-@Path("/Supervisor")
+@Path("/supervisor")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -26,27 +28,26 @@ public class SupervisorController {
 	String sql  = "";
 
     @Inject
-	public
-    SupervisorRepository SupervisorRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Supervisor getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final Supervisor resp = SupervisorRepo.findById(id);
+		Supervisor resp = Supervisor.findById(id);
 		if (resp == null) {
 			throw new NoResultException("Supervisor - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid Supervisor create(@Valid final Supervisor supervisor) {
-		SupervisorRepo.persist(supervisor);
+	@POST  
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid Supervisor create(@Valid  Supervisor supervisor) {
+		Supervisor.persist(supervisor);
 	    return supervisor;
     }
 }

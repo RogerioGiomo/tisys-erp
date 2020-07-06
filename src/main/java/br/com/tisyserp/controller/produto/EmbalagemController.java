@@ -13,9 +13,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.produto.Embalagem;
-import br.com.tisyserp.repository.produto.EmbalagemRepository;
 
 @Path("/Embalagem")
 @ApplicationScoped
@@ -26,27 +27,25 @@ public class EmbalagemController {
 	String sql  = "";
 
     @Inject
-	public
-    EmbalagemRepository EmbalagemRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") @Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Embalagem getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final Embalagem resp = EmbalagemRepo.findById(id);
+		 Embalagem resp = Embalagem.findById(id);
 		if (resp == null) {
 			throw new NoResultException("Embalagem - não encontrado - id: " + id);
 		}
-		return resp;
+		 return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid Embalagem create(@Valid final Embalagem embalagem) {
-		EmbalagemRepo.persist(embalagem);
+	@POST  
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid Embalagem create(@Valid  Embalagem embalagem) {
+		Embalagem.persist(embalagem);
 	    return embalagem;
     }
 }

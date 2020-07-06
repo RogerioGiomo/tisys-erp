@@ -15,6 +15,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.eclipse.microprofile.faulttolerance.Retry;
+
 import br.com.tisyserp.model.produto.Autor;
 
 @Path("/Autor")
@@ -29,7 +31,7 @@ public class AutorController {
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") @Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
 	public Response getId(@PathParam("id") Long id) throws NoResultException {
 
@@ -41,8 +43,9 @@ public class AutorController {
 	}
 
 	@POST  
-	@Transactional
-    public @Valid Autor create(@Valid final Autor autor) {
+	@Transactional 
+ @Retry(maxRetries = 4)
+    public @Valid Autor create(@Valid  Autor autor) {
 		Autor.persist(autor);
 	    return autor;
     }

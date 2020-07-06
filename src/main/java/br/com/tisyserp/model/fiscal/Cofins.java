@@ -15,7 +15,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 @Table(name = "cofins")
 public class Cofins extends PanacheEntityBase {
 	
-	public static final Long serialVersionUID = 1L;
+	public static  Long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long cofi_id;

@@ -13,9 +13,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.tabelaauxiliar.Regiao;
-import br.com.tisyserp.repository.tabelaauxiliar.RegiaoRepository;
 
 @Path("/Regiao")
 @ApplicationScoped
@@ -26,27 +28,26 @@ public class RegiaoController {
 	String sql  = "";
 
     @Inject
-	public
-    RegiaoRepository RegiaoRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Regiao getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final Regiao resp = RegiaoRepo.findById(id);
+		Regiao resp = Regiao.findById(id);
 		if (resp == null) {
 			throw new NoResultException("Regiao - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid Regiao create(@Valid final Regiao regiao) {
-		RegiaoRepo.persist(regiao);
+	@POST  
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid Regiao create(@Valid  Regiao regiao) {
+		Regiao.persist(regiao);
 	    return regiao;
     }
 }

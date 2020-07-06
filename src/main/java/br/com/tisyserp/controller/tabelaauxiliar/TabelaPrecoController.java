@@ -13,11 +13,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.tabelaauxiliar.TabelaPreco;
-import br.com.tisyserp.repository.tabelaauxiliar.TabelaPrecoRepository;
 
-@Path("/TabelaPreco")
+@Path("/tabela_preco")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -26,27 +28,26 @@ public class TabelaPrecoController {
 	String sql  = "";
 
     @Inject
-	public
-    TabelaPrecoRepository TabelaPrecoRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public TabelaPreco getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final TabelaPreco resp = TabelaPrecoRepo.findById(id);
+		TabelaPreco resp = TabelaPreco.findById(id);
 		if (resp == null) {
 			throw new NoResultException("TabelaPreco - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid TabelaPreco create(@Valid final TabelaPreco tabelaPreco) {
-		TabelaPrecoRepo.persist(tabelaPreco);
+	@POST  
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid TabelaPreco create(@Valid  TabelaPreco tabelaPreco) {
+		TabelaPreco.persist(tabelaPreco);
 	    return tabelaPreco;
     }
 }

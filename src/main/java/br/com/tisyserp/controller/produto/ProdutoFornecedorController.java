@@ -13,11 +13,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.produto.ProdutoFornecedor;
-import br.com.tisyserp.repository.produto.ProdutoFornecedorRepository;
 
-@Path("/ProdutoFornecedor")
+@Path("/produto_fornecedor")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -26,27 +28,26 @@ public class ProdutoFornecedorController {
 	String sql  = "";
 
     @Inject
-	public
-    ProdutoFornecedorRepository ProdutoFornecedorRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public ProdutoFornecedor getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final ProdutoFornecedor resp = ProdutoFornecedorRepo.findById(id);
+		 ProdutoFornecedor resp = ProdutoFornecedor.findById(id);
 		if (resp == null) {
 			throw new NoResultException("ProdutoFornecedor - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid ProdutoFornecedor create(@Valid final ProdutoFornecedor produtoFornecedor) {
-		ProdutoFornecedorRepo.persist(produtoFornecedor);
+	@POST  
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid ProdutoFornecedor create(@Valid  ProdutoFornecedor produtoFornecedor) {
+		ProdutoFornecedor.persist(produtoFornecedor);
 	    return produtoFornecedor;
     }
 }

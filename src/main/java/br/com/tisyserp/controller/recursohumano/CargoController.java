@@ -13,9 +13,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.recursohumano.Cargo;
-import br.com.tisyserp.repository.recursohumano.CargoRepository;
 
 @Path("/cargo")
 @ApplicationScoped
@@ -26,27 +28,26 @@ public class CargoController {
 	String sql  = "";
 
     @Inject
-	public
-    CargoRepository CargoRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Cargo getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final Cargo resp = CargoRepo.findById(id);
+		Cargo resp = Cargo.findById(id);
 		if (resp == null) {
 			throw new NoResultException("Cargo - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid Cargo create(@Valid final Cargo cargo) {
-		CargoRepo.persist(cargo);
+	@POST  
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid Cargo create(@Valid  Cargo cargo) {
+		Cargo.persist(cargo);
 	    return cargo;
     }
 }

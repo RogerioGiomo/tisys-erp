@@ -13,9 +13,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.recursohumano.Funcao;
-import br.com.tisyserp.repository.recursohumano.FuncaoRepository;
 
 @Path("/funcao")
 @ApplicationScoped
@@ -26,27 +28,26 @@ public class FuncaoController {
 	String sql  = "";
 
     @Inject
-	public
-    FuncaoRepository FuncaoRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Funcao getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final Funcao resp = FuncaoRepo.findById(id);
+		Funcao resp = Funcao.findById(id);
 		if (resp == null) {
 			throw new NoResultException("Funcao - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid Funcao create(@Valid final Funcao funcao) {
-		FuncaoRepo.persist(funcao);
+	@POST  
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid Funcao create(@Valid  Funcao funcao) {
+		Funcao.persist(funcao);
 	    return funcao;
     }
 }

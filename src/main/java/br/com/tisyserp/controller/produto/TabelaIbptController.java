@@ -13,11 +13,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.produto.TabelaIbpt;
-import br.com.tisyserp.repository.produto.TabelaIbptRepository;
 
-@Path("/TabelaIbpt")
+@Path("/tabela_ibpt")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -26,27 +28,26 @@ public class TabelaIbptController {
 	String sql  = "";
 
     @Inject
-	public
-    TabelaIbptRepository TabelaIbptRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public TabelaIbpt getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final TabelaIbpt resp = TabelaIbptRepo.findById(id);
+		TabelaIbpt resp = TabelaIbpt.findById(id);
 		if (resp == null) {
 			throw new NoResultException("TabelaIbpt - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid TabelaIbpt create(@Valid final TabelaIbpt tabelaIbpt) {
-		TabelaIbptRepo.persist(tabelaIbpt);
+	@POST  
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid TabelaIbpt create(@Valid  TabelaIbpt tabelaIbpt) {
+		TabelaIbpt.persist(tabelaIbpt);
 	    return tabelaIbpt;
     }
 }

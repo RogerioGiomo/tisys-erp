@@ -13,9 +13,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.fiscal.Icm;
-import br.com.tisyserp.repository.fiscal.IcmRepository;
 
 @Path("/icm")
 @ApplicationScoped
@@ -25,28 +27,26 @@ public class IcmController {
 	
 	String sql  = "";
 
-    @Inject
-	public
-    IcmRepository Repo;
 
     @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") @Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Icm getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final Icm resp = Repo.findById(id);
+		 Icm resp = Icm.findById(id);
 		if (resp == null) {
 			throw new NoResultException("Icm - não encontrado - id: " + id);
 		}
-		return resp;
+		return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid Icm create(@Valid final Icm icm) {
-		Repo.persist(icm);
+	@POST  @Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid Icm create(@Valid  Icm icm) {
+		Icm.persist(icm);
 	    return icm;
 	
     }

@@ -13,6 +13,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.fiscal.SituacaoTributariaPis;
 import br.com.tisyserp.repository.fiscal.SituacaoTributariaPisRepository;
@@ -33,20 +36,22 @@ public class SituacaoTributariaPisController {
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public SituacaoTributariaPis getId(@PathParam("id") final Long id) throws NoResultException {
+	public  Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final SituacaoTributariaPis resp = Repo.findById(id);
+		 SituacaoTributariaPis resp = SituacaoTributariaPis.findById(id);
 		if (resp == null) {
 			throw new NoResultException("SituacaoTributariaPis - não encontrado - id: " + id);
 		}
-		return resp;
+	                return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid SituacaoTributariaPis create(@Valid final SituacaoTributariaPis situacaotributariapis) {
-		Repo.persist(situacaotributariapis);
+	@POST  @Transactional 
+ @Retry(maxRetries = 4)
+    public @Valid SituacaoTributariaPis create(@Valid  SituacaoTributariaPis situacaotributariapis) {
+		SituacaoTributariaPis.persist(situacaotributariapis);
 	    return situacaotributariapis;
 	
     }

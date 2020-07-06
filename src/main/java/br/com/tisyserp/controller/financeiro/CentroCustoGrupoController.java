@@ -30,7 +30,7 @@ public class CentroCustoGrupoController {
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
 	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
 	public Response getId(@PathParam("id") Long id) throws NoResultException {
@@ -39,12 +39,13 @@ public class CentroCustoGrupoController {
 		if (resp == null) {
 			throw new NoResultException("CentroCustoGrupo - não encontrado - id: " + id);
 		}
-		return Response.ok(resp).build();
+		        return Response.ok(resp).build();
 	}
 
 	@POST  
-	@Transactional
-    public @Valid CentroCustoGrupo create(@Valid final CentroCustoGrupo centrocustogrupo) {
+	@Transactional 
+ @Retry(maxRetries = 4)
+    public @Valid CentroCustoGrupo create(@Valid  CentroCustoGrupo centrocustogrupo) {
 		CentroCustoGrupo.persist(centrocustogrupo);
 	    return centrocustogrupo;
     }

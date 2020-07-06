@@ -13,11 +13,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.pessoa.ParceiroTipo;
-import br.com.tisyserp.repository.pessoa.ParceiroTipoRepository;
 
-@Path("/ParceiroTipo")
+@Path("/parceiro_tipo")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -26,27 +28,24 @@ public class ParceiroTipoController {
 	String sql  = "";
 
     @Inject
-	public
-    ParceiroTipoRepository ParceiroTipoRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") @Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public ParceiroTipo getId(@PathParam("id") final Long id) throws NoResultException {
+	public  Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final ParceiroTipo resp = ParceiroTipoRepo.findById(id);
+		 ParceiroTipo resp = ParceiroTipo.findById(id);
 		if (resp == null) {
 			throw new NoResultException("ParceiroTipo - não encontrado - id: " + id);
 		}
-		return resp;
+	                return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid ParceiroTipo create(@Valid final ParceiroTipo parceiroTipo) {
-		ParceiroTipoRepo.persist(parceiroTipo);
+	@POST  @Transactional 
+ @Retry(maxRetries = 4)
+    public @Valid ParceiroTipo create(@Valid  ParceiroTipo parceiroTipo) {
+		ParceiroTipo.persist(parceiroTipo);
 	    return parceiroTipo;
     }
 }

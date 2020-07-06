@@ -13,6 +13,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.fiscal.Ipi;
 import br.com.tisyserp.repository.fiscal.IpiRepository;
@@ -33,20 +36,21 @@ public class IpiController {
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") @Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Ipi getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final Ipi resp = Repo.findById(id);
+		 Ipi resp = Ipi.findById(id);
 		if (resp == null) {
 			throw new NoResultException("ipi - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid Ipi create(@Valid final Ipi ipi) {
-		Repo.persist(ipi);
+	@POST  @Transactional 
+ @Retry(maxRetries = 4)
+    public @Valid Ipi create(@Valid  Ipi ipi) {
+		Ipi.persist(ipi);
 	    return ipi;
 
     }

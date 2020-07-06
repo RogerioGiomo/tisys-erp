@@ -13,6 +13,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.fiscal.SerieFiscal;
 import br.com.tisyserp.repository.fiscal.SerieFiscalRepository;
@@ -33,20 +36,21 @@ public class SerieFiscalController  {
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") @Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public SerieFiscal getId(@PathParam("id") final Long id) throws NoResultException {
+	public  Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final SerieFiscal resp = Repo.findById(id);
+		 SerieFiscal resp = SerieFiscal.findById(id);
 		if (resp == null) {
 			throw new NoResultException("SerieFiscal - não encontrado - id: " + id);
 		}
-		return resp;
+	                return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid SerieFiscal create(@Valid final SerieFiscal seriefiscal) {
-		Repo.persist(seriefiscal);
+	@POST  @Transactional 
+ @Retry(maxRetries = 4)
+    public @Valid SerieFiscal create(@Valid  SerieFiscal seriefiscal) {
+		SerieFiscal.persist(seriefiscal);
 	    return seriefiscal;
 	
     }

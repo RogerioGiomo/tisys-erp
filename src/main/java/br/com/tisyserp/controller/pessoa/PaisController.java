@@ -13,9 +13,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.pessoa.Pais;
-import br.com.tisyserp.repository.pessoa.PaisRepository;
 
 @Path("/Pais")
 @ApplicationScoped
@@ -26,27 +28,25 @@ public class PaisController {
 	String sql  = "";
 
     @Inject
-	public
-    PaisRepository PaisRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") @Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Pais getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final Pais resp = PaisRepo.findById(id);
+		Pais resp = Pais.findById(id);
 		if (resp == null) {
 			throw new NoResultException("Pais - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid Pais create(@Valid final Pais pais) {
-		PaisRepo.persist(pais);
+	@POST  
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid Pais create(@Valid  Pais pais) {
+		Pais.persist(pais);
 	    return pais;
     }
 }

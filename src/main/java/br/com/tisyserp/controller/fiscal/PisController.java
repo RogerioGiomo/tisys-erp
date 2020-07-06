@@ -13,6 +13,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.fiscal.Pis;
 import br.com.tisyserp.repository.fiscal.PisRepository;
@@ -33,20 +36,21 @@ public class PisController {
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") @Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Pis getId(@PathParam("id") final Long id) throws NoResultException {
+	public  Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final Pis resp = Repo.findById(id);
+		 Pis resp = Pis.findById(id);
 		if (resp == null) {
 			throw new NoResultException("Pis - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid Pis create(@Valid final Pis pis) {
-		Repo.persist(pis);
+	@POST  @Transactional 
+ @Retry(maxRetries = 4)
+    public @Valid Pis create(@Valid  Pis pis) {
+		Pis.persist(pis);
 	    return pis;
 	
     }

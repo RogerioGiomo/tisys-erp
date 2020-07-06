@@ -13,6 +13,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.pessoa.ParceiroObraResponsavel;
 import br.com.tisyserp.repository.pessoa.ParceiroObraResponsavelRepository;
@@ -33,20 +36,23 @@ public class ParceiroObraResponsavelController {
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public ParceiroObraResponsavel getId(@PathParam("id") final Long id) throws NoResultException {
+	public  Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final ParceiroObraResponsavel resp = ParceiroObraResponsavelRepo.findById(id);
+		ParceiroObraResponsavel resp = ParceiroObraResponsavel.findById(id);
 		if (resp == null) {
 			throw new NoResultException("ParceiroObraResponsavel - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid ParceiroObraResponsavel create(@Valid final ParceiroObraResponsavel parceiroObraResponsavel) {
-		ParceiroObraResponsavelRepo.persist(parceiroObraResponsavel);
+	@POST  
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid ParceiroObraResponsavel create(@Valid  ParceiroObraResponsavel parceiroObraResponsavel) {
+		ParceiroObraResponsavel.persist(parceiroObraResponsavel);
 	    return parceiroObraResponsavel;
     }
 }

@@ -16,7 +16,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 public class TipoMovimento extends PanacheEntityBase {
 
-	public static final long serialVersionUID = 1L;
+	public static  long serialVersionUID = 1L;
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -13,6 +13,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.financeiro.CondicaoPagamento;
 import br.com.tisyserp.repository.financeiro.CondicaoPagamentoRepository;
@@ -33,21 +36,23 @@ public class CondicaoPagamentoController {
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public CondicaoPagamento getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final CondicaoPagamento resp = Repo.findById(id);
+		 CondicaoPagamento resp = CondicaoPagamento.findById(id);
 		if (resp == null) {
 			throw new NoResultException("CondicaoPagamento - não encontrado - id: " + id);
 		}
-		return resp;
+	                return Response.ok(resp).build();
 	}
 
 	@POST  
-	@Transactional
-    public @Valid CondicaoPagamento create(@Valid final CondicaoPagamento condicaopagamento) {
-		Repo.persist(condicaopagamento);
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid CondicaoPagamento create(@Valid  CondicaoPagamento condicaopagamento) {
+		CondicaoPagamento.persist(condicaopagamento);
 	    return condicaopagamento;
     }
 }

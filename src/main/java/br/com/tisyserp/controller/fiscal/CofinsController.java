@@ -13,9 +13,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.fiscal.Cofins;
-import br.com.tisyserp.repository.fiscal.CofinsRepository;
 
 @Path("/cofins")
 @ApplicationScoped
@@ -26,27 +28,25 @@ public class CofinsController {
 	String sql  = "";
 
     @Inject
-	public
-    CofinsRepository CofinsRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Cofins getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final Cofins resp = CofinsRepo.findById(id);
+	    Cofins resp = Cofins.findById(id);
 		if (resp == null) {
 			throw new NoResultException("Cofins - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid Cofins create(@Valid final Cofins cofins) {
-		CofinsRepo.persist(cofins);
+	@POST  @Transactional 
+ @Retry(maxRetries = 4)
+    public @Valid Cofins create(@Valid  Cofins cofins) {
+		Cofins.persist(cofins);
 	    return cofins;
 
     }

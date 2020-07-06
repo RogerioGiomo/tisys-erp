@@ -34,7 +34,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 @Table(name = "pedido")
 public class Pedido extends PanacheEntityBase {
 	
-	public static final long serialVersionUID = 1L;
+	public static  long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long pedi_id;
@@ -258,7 +258,7 @@ public class Pedido extends PanacheEntityBase {
 	
 	@NotNull
 	@Size(max = 1)
-	public String pedi_finalidade;  // finalidade da nota, normal, ajuste, complementar...  
+	public String pedi_idade;  // idade da nota, normal, ajuste, complementar...  
 	
 	@NotNull
 	@Size(max = 20)

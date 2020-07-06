@@ -13,11 +13,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.recursohumano.Gerente;
-import br.com.tisyserp.repository.recursohumano.GerenteRepository;
 
-@Path("/Gerente")
+@Path("/gerente")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -26,27 +28,26 @@ public class GerenteController {
 	String sql  = "";
 
     @Inject
-	public
-    GerenteRepository GerenteRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Gerente getId(@PathParam("id") final Long id) throws NoResultException {
+	public  Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final Gerente resp = GerenteRepo.findById(id);
+		Gerente resp = Gerente.findById(id);
 		if (resp == null) {
 			throw new NoResultException("Gerente - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid Gerente create(@Valid final Gerente gerente) {
-		GerenteRepo.persist(gerente);
+	@POST  
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid Gerente create(@Valid  Gerente gerente) {
+		Gerente.persist(gerente);
 	    return gerente;
     }
 }

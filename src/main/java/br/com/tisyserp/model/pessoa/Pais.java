@@ -16,7 +16,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 	       @Index(name = "idxpais_desc", columnList = "pais_desc")})
 
 public class Pais extends PanacheEntityBase {
-	public static final Long serialVersionUID = 1L;
+	public static  Long serialVersionUID = 1L;
 
 	@Id
 	@Basic(optional = false)

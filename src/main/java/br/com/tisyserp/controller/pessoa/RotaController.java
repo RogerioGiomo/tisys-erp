@@ -13,9 +13,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.pessoa.Rota;
-import br.com.tisyserp.repository.pessoa.RotaRepository;
 
 @Path("/Rota")
 @ApplicationScoped
@@ -26,27 +28,26 @@ public class RotaController {
 	String sql  = "";
 
     @Inject
-	public
-    RotaRepository RotaRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Rota getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final Rota resp = RotaRepo.findById(id);
+		Rota resp = Rota.findById(id);
 		if (resp == null) {
 			throw new NoResultException("Rota - não encontrado - id: " + id);
 		}
-		return resp;
+	     return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid Rota create(@Valid final Rota rota) {
-		RotaRepo.persist(rota);
+	@POST  
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid Rota create(@Valid  Rota rota) {
+		Rota.persist(rota);
 	    return rota;
     }
 }

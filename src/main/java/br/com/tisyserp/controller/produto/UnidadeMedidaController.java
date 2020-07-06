@@ -14,10 +14,12 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.tisyserp.model.produto.UnidadeMedida;
-import br.com.tisyserp.repository.produto.UnidadeMedidaRepository;
+import org.eclipse.microprofile.faulttolerance.Retry;
+import javax.ws.rs.core.Response;
 
-@Path("/UnidadeMedida")
+import br.com.tisyserp.model.produto.UnidadeMedida;
+
+@Path("/unidade_medida")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -26,27 +28,26 @@ public class UnidadeMedidaController {
 	String sql  = "";
 
     @Inject
-	public
-    UnidadeMedidaRepository UnidadeMedidaRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public UnidadeMedida getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final UnidadeMedida resp = UnidadeMedidaRepo.findById(id);
+		UnidadeMedida resp = UnidadeMedida.findById(id);
 		if (resp == null) {
 			throw new NoResultException("UnidadeMedida - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid UnidadeMedida create(@Valid final UnidadeMedida unidadeMedida) {
-		UnidadeMedidaRepo.persist(unidadeMedida);
+	@POST  
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid UnidadeMedida create(@Valid  UnidadeMedida unidadeMedida) {
+		UnidadeMedida.persist(unidadeMedida);
 	    return unidadeMedida;
     }
 }

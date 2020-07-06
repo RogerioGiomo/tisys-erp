@@ -16,7 +16,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 public class Ipi extends PanacheEntityBase {
 	
-	public static final Long serialVersionUID = 1L;
+	public static  Long serialVersionUID = 1L;
 
 	@Id
 	

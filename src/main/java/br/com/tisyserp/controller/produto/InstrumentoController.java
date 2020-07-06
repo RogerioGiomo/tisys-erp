@@ -13,11 +13,14 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.produto.Instrumento;
-import br.com.tisyserp.repository.produto.InstrumentoRepository;
 
-@Path("/Instrumento")
+
+@Path("/instrumento")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -26,27 +29,26 @@ public class InstrumentoController {
 	String sql  = "";
 
     @Inject
-	public
-    InstrumentoRepository InstrumentoRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Instrumento getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final Instrumento resp = InstrumentoRepo.findById(id);
+		Instrumento resp = Instrumento.findById(id);
 		if (resp == null) {
 			throw new NoResultException("Instrumento - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid Instrumento create(@Valid final Instrumento instrumento) {
-		InstrumentoRepo.persist(instrumento);
+	@POST  
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid Instrumento create(@Valid  Instrumento instrumento) {
+		Instrumento.persist(instrumento);
 	    return instrumento;
     }
 }

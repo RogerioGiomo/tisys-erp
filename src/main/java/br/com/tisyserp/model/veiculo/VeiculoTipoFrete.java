@@ -15,7 +15,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 @Table(name = "veiculo_tipo_frete")
 public class VeiculoTipoFrete extends PanacheEntityBase  {
 	
-	public static final long serialVersionUID = 1L;
+	public static  long serialVersionUID = 1L;
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

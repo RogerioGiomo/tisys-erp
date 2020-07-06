@@ -31,7 +31,7 @@ public class BancoController {
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
 	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
 	public Response getId(@PathParam("id") Long id) throws NoResultException {
@@ -44,9 +44,9 @@ public class BancoController {
 	}
 
 	@POST  
-	@Transactional
-	@Retry(maxRetries = 4)
-    public @Valid Banco create(@Valid final Banco banco) {
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid Banco create(@Valid  Banco banco) {
 		Banco.persist(banco);
 	    return banco;
     }

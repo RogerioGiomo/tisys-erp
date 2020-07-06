@@ -13,6 +13,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.financeiro.CondicaoPagamentoParcela;
 import br.com.tisyserp.repository.financeiro.CondicaoPagamentoParcelaRepository;
@@ -33,21 +36,23 @@ public class CondicaoPagamentoParcelaController {
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public CondicaoPagamentoParcela getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final CondicaoPagamentoParcela resp = Repo.findById(id);
+		 CondicaoPagamentoParcela resp = CondicaoPagamentoParcela.findById(id);
 		if (resp == null) {
 			throw new NoResultException("CondicaoPagamentoParcela - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
 	@POST  
-	@Transactional
-    public @Valid CondicaoPagamentoParcela create(@Valid final CondicaoPagamentoParcela condicaopagamentoparcela) {
-		Repo.persist(condicaopagamentoparcela);
+	@Transactional 
+ @Retry(maxRetries = 4)
+    public @Valid CondicaoPagamentoParcela create(@Valid  CondicaoPagamentoParcela condicaopagamentoparcela) {
+		CondicaoPagamentoParcela.persist(condicaopagamentoparcela);
 	    return condicaopagamentoparcela;
     }
 }

@@ -13,11 +13,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.tabelaauxiliar.Status;
-import br.com.tisyserp.repository.tabelaauxiliar.StatusRepository;
 
-@Path("/Status")
+@Path("status")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -26,27 +28,26 @@ public class StatusController {
 	String sql  = "";
 
     @Inject
-	public
-    StatusRepository StatusRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Status getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final Status resp = StatusRepo.findById(id);
+		Status resp = Status.findById(id);
 		if (resp == null) {
 			throw new NoResultException("Status - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid Status create(@Valid final Status status) {
-		StatusRepo.persist(status);
+	@POST  
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid Status create(@Valid  Status status) {
+		Status.persist(status);
 	    return status;
     }
 }

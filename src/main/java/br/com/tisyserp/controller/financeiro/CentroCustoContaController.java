@@ -31,21 +31,22 @@ public class CentroCustoContaController {
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
 	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Response getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
 		CentroCustoConta resp = CentroCustoConta.findById(id);
 		if (resp == null) {
 			throw new NoResultException("CentroCustoConta - não encontrado - id: " + id);
 		}
-		return Response.ok(resp).build();
+		        return Response.ok(resp).build();
 	}
 
 	@POST  
-	@Transactional
-	    public @Valid CentroCustoConta create(@Valid final CentroCustoConta centrocustoconta) {
+	@Transactional 
+ @Retry(maxRetries = 4)
+	    public @Valid CentroCustoConta create(@Valid  CentroCustoConta centrocustoconta) {
 		CentroCustoConta.persist(centrocustoconta);
 	    return centrocustoconta;
     }

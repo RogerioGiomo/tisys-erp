@@ -13,6 +13,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.pessoa.ParceiroRede;
 import br.com.tisyserp.repository.pessoa.ParceiroRedeRepository;
@@ -33,20 +36,22 @@ public class ParceiroRedeController {
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public ParceiroRede getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final ParceiroRede resp = ParceiroRedeRepo.findById(id);
+		ParceiroRede resp = ParceiroRede.findById(id);
 		if (resp == null) {
 			throw new NoResultException("ParceiroRede - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid ParceiroRede create(@Valid final ParceiroRede Parceirorede) {
-		ParceiroRedeRepo.persist(Parceirorede);
+	@POST  @Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid ParceiroRede create(@Valid  ParceiroRede Parceirorede) {
+		ParceiroRede.persist(Parceirorede);
 	    return Parceirorede;
     }
 }

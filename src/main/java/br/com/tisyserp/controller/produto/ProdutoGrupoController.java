@@ -13,11 +13,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.produto.ProdutoGrupo;
-import br.com.tisyserp.repository.produto.ProdutoGrupoRepository;
 
-@Path("/ProdutoGrupo")
+@Path("/produto_grupo")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -26,27 +28,26 @@ public class ProdutoGrupoController {
 	String sql  = "";
 
     @Inject
-	public
-    ProdutoGrupoRepository ProdutoGrupoRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public ProdutoGrupo getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final ProdutoGrupo resp = ProdutoGrupoRepo.findById(id);
+		ProdutoGrupo resp = ProdutoGrupo.findById(id);
 		if (resp == null) {
 			throw new NoResultException("ProdutoGrupo - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid ProdutoGrupo create(@Valid final ProdutoGrupo produtoGrupo) {
-		ProdutoGrupoRepo.persist(produtoGrupo);
+	@POST  
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid ProdutoGrupo create(@Valid  ProdutoGrupo produtoGrupo) {
+		ProdutoGrupo.persist(produtoGrupo);
 	    return produtoGrupo;
     }
 }

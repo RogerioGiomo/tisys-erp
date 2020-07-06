@@ -13,6 +13,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.pessoa.ParceiroTabelaPreco;
 import br.com.tisyserp.repository.pessoa.ParceiroTabelaPrecoRepository;
@@ -33,20 +36,22 @@ public class ParceiroTabelaPrecoController {
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public ParceiroTabelaPreco getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final ParceiroTabelaPreco resp = ParceiroTabelaPrecoRepo.findById(id);
+		ParceiroTabelaPreco resp = ParceiroTabelaPreco.findById(id);
 		if (resp == null) {
 			throw new NoResultException("ParceiroTabelaPreco - não encontrado - id: " + id);
 		}
-		return resp;
+	     return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid ParceiroTabelaPreco create(@Valid final ParceiroTabelaPreco parceiroTabelaPreco) {
-		ParceiroTabelaPrecoRepo.persist(parceiroTabelaPreco);
+	@POST  @Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid ParceiroTabelaPreco create(@Valid  ParceiroTabelaPreco parceiroTabelaPreco) {
+		ParceiroTabelaPreco.persist(parceiroTabelaPreco);
 	    return parceiroTabelaPreco;
     }
 }

@@ -18,7 +18,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 	       @Index(name = "idxcida_cida", columnList = "cida_cida")})
 
 public class Cidade extends PanacheEntityBase {
-	public static final Long serialVersionUID = 1L;
+	public static  Long serialVersionUID = 1L;
 
 	@Id
 	@Basic(optional = false)

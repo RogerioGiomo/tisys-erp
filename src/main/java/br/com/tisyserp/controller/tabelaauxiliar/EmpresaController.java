@@ -13,9 +13,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.tabelaauxiliar.Empresa;
-import br.com.tisyserp.repository.tabelaauxiliar.EmpresaRepository;
 
 @Path("/Empresa")
 @ApplicationScoped
@@ -26,27 +28,26 @@ public class EmpresaController {
 	String sql  = "";
 
     @Inject
-	public
-    EmpresaRepository EmpresaRepo;
-
-    @Inject
 	EntityManager entityManager;
 
 	@GET
-	@Path("/{id}")
+	@Path("/{id}") 
+	@Retry(maxRetries = 4)
 	@Produces(value = MediaType.APPLICATION_JSON)
-	public Empresa getId(@PathParam("id") final Long id) throws NoResultException {
+	public Response getId(@PathParam("id")  Long id) throws NoResultException {
 
-		final Empresa resp = EmpresaRepo.findById(id);
+		Empresa resp = Empresa.findById(id);
 		if (resp == null) {
 			throw new NoResultException("Empresa - não encontrado - id: " + id);
 		}
-		return resp;
+	    return Response.ok(resp).build();
 	}
 
-	@POST  @Transactional
-    public @Valid Empresa create(@Valid final Empresa empresa) {
-		EmpresaRepo.persist(empresa);
+	@POST  
+	@Transactional 
+ 	@Retry(maxRetries = 4)
+    public @Valid Empresa create(@Valid  Empresa empresa) {
+		Empresa.persist(empresa);
 	    return empresa;
     }
 }

@@ -18,7 +18,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 public class SituacaoTributaria extends PanacheEntityBase {
 	
-	public static final Long serialVersionUID = 1L;
+	public static  Long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

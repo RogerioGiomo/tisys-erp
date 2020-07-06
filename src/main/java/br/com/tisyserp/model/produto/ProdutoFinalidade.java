@@ -18,7 +18,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 public class ProdutoFinalidade  extends PanacheEntityBase {
 	
-	public static final Long serialVersionUID = 1L;
+	public static  Long serialVersionUID = 1L;
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +31,4 @@ public class ProdutoFinalidade  extends PanacheEntityBase {
 	@NotNull
 	@Size(max = 60)
 	public String prfin_desc;
-
-	
 }
