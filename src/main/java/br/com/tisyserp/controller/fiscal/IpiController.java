@@ -18,7 +18,6 @@ import javax.ws.rs.core.Response;
 import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.fiscal.Ipi;
-import br.com.tisyserp.repository.fiscal.IpiRepository;
 
 @Path("/ipi")
 @ApplicationScoped
@@ -27,10 +26,6 @@ import br.com.tisyserp.repository.fiscal.IpiRepository;
 public class IpiController {
 	
 	String sql  = "";
-
-    @Inject
-	public
-    IpiRepository Repo;
 
     @Inject
 	EntityManager entityManager;

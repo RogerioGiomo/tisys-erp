@@ -18,7 +18,6 @@ import javax.ws.rs.core.Response;
 import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.fiscal.Pis;
-import br.com.tisyserp.repository.fiscal.PisRepository;
 
 @Path("/pis")
 @ApplicationScoped
@@ -27,10 +26,6 @@ import br.com.tisyserp.repository.fiscal.PisRepository;
 public class PisController {
 	
 	String sql  = "";
-
-    @Inject
-	public
-    PisRepository Repo;
 
     @Inject
 	EntityManager entityManager;

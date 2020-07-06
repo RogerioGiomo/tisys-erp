@@ -19,7 +19,7 @@ import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.pessoa.ParceiroEndereco;
 
-@Path("/ParceiroEndereco")
+@Path("/parceiro_endereco")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

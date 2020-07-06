@@ -18,19 +18,14 @@ import javax.ws.rs.core.Response;
 import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.fiscal.SituacaoTributariaIpi;
-import br.com.tisyserp.repository.fiscal.SituacaoTributariaIpiRepository;
 
-@Path("/situacaotributariaipi")
+@Path("/situacao_tributaria_ipi")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class SituacaoTributariaIpiController {
 	
 	String sql  = "";
-
-    @Inject
-	public
-    SituacaoTributariaIpiRepository Repo;
 
     @Inject
 	EntityManager entityManager;

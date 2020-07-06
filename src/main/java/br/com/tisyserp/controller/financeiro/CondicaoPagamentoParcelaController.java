@@ -18,19 +18,14 @@ import javax.ws.rs.core.Response;
 import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.financeiro.CondicaoPagamentoParcela;
-import br.com.tisyserp.repository.financeiro.CondicaoPagamentoParcelaRepository;
 
-@Path("/condicaopagamentoparcela")
+@Path("/condicao_pagamento_parcela")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class CondicaoPagamentoParcelaController {
 	
 	String sql  = "";
-
-    @Inject
-	public
-    CondicaoPagamentoParcelaRepository Repo;
 
     @Inject
 	EntityManager entityManager;

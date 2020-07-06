@@ -18,7 +18,7 @@ import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.produto.Editora;
 
-@Path("/Editora")
+@Path("/editora")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

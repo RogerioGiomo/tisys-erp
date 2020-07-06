@@ -18,7 +18,6 @@ import javax.ws.rs.core.Response;
 import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.financeiro.CondicaoPagamento;
-import br.com.tisyserp.repository.financeiro.CondicaoPagamentoRepository;
 
 @Path("/condicaopagamento")
 @ApplicationScoped
@@ -27,10 +26,6 @@ import br.com.tisyserp.repository.financeiro.CondicaoPagamentoRepository;
 public class CondicaoPagamentoController {
 	
 	String sql  = "";
-
-    @Inject
-	public
-    CondicaoPagamentoRepository Repo;
 
     @Inject
 	EntityManager entityManager;

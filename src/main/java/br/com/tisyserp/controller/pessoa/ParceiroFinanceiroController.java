@@ -18,19 +18,14 @@ import javax.ws.rs.core.Response;
 import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.pessoa.ParceiroFinanceiro;
-import br.com.tisyserp.repository.pessoa.ParceiroFinanceiroRepository;
 
-@Path("/ParceiroFinanceiro")
+@Path("/parceiro_financeiro")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ParceiroFinanceiroController {
 	
 	String sql  = "";
-
-    @Inject
-	public
-    ParceiroFinanceiroRepository ParceiroFinanceiroRepo;
 
     @Inject
 	EntityManager entityManager;

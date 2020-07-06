@@ -19,7 +19,7 @@ import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.tabelaauxiliar.RamoAtividade;
 
-@Path("/Ramo_Atividade")
+@Path("/ramo_atividade")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

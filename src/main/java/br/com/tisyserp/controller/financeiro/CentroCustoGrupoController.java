@@ -18,7 +18,7 @@ import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.financeiro.CentroCustoGrupo;
 
-@Path("/centrocustogrupo")
+@Path("/centro_custo_grupo")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

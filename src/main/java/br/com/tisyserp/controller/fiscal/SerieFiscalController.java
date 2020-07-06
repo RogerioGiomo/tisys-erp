@@ -18,19 +18,14 @@ import javax.ws.rs.core.Response;
 import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.fiscal.SerieFiscal;
-import br.com.tisyserp.repository.fiscal.SerieFiscalRepository;
 
-@Path("/seriefiscal")
+@Path("/serie_fiscal")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class SerieFiscalController  {
 	
 	String sql  = "";
-
-    @Inject
-	public
-    SerieFiscalRepository Repo;
 
     @Inject
 	EntityManager entityManager;

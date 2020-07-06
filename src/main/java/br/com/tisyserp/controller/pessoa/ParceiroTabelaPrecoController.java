@@ -18,19 +18,14 @@ import javax.ws.rs.core.Response;
 import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.pessoa.ParceiroTabelaPreco;
-import br.com.tisyserp.repository.pessoa.ParceiroTabelaPrecoRepository;
 
-@Path("/ParceiroTabelaPreco")
+@Path("/parceiro_tabela_preco")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ParceiroTabelaPrecoController {
 	
 	String sql  = "";
-
-    @Inject
-	public
-    ParceiroTabelaPrecoRepository ParceiroTabelaPrecoRepo;
 
     @Inject
 	EntityManager entityManager;

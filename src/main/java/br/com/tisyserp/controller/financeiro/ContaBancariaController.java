@@ -18,19 +18,14 @@ import javax.ws.rs.core.Response;
 import org.eclipse.microprofile.faulttolerance.Retry;
 
 import br.com.tisyserp.model.financeiro.Banco;
-import br.com.tisyserp.repository.financeiro.BancoRepository;
 
-@Path("/contabancaria")
+@Path("/conta_bancaria")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ContaBancariaController {
 	
 	String sql  = "";
-
-    @Inject
-	public
-    BancoRepository BancoRepo;
 
     @Inject
 	EntityManager entityManager;
