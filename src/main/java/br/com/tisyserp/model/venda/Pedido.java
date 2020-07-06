@@ -258,7 +258,7 @@ public class Pedido extends PanacheEntityBase {
 	
 	@NotNull
 	@Size(max = 1)
-	public String pedi_idade;  // idade da nota, normal, ajuste, complementar...  
+	public String pedi_finalidade;  // idade da nota, normal, ajuste, complementar...  
 	
 	@NotNull
 	@Size(max = 20)

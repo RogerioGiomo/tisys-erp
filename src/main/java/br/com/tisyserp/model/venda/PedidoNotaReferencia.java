@@ -1,4 +1,4 @@
-package  br.com.tisyserp.model.financeiro;
+package br.com.tisyserp.model.venda;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -12,26 +12,22 @@ import javax.validation.constraints.Size;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
-@Table(name = "banco")
+@Table(name = "pedido_nota_referencia")
 
-public class Banco extends PanacheEntityBase  {
-	
-	public static  Long serialVersionUID = 1L;
+public  class PedidoNotaReferencia extends PanacheEntityBase {
+
+    public  static  Long serialVersionUID = 1L;
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long banc_id;
+	@NotNull
+	public  Long pdnotref_id;
 
 	@NotNull
-	@Size(max = 4)
-	public String banc_codi;   // codigo bancario 237-bradesco 341-itau 001 brasil
+	public  Long pdnotref_pedi_id;
 
-	@NotNull
-	@Size(max = 60)
-	public String banc_desc;
-
-	@NotNull
-	@Size(max = 10)
-	public String banc_desc_redu;
-	
+    @NotNull
+	@Size(max = 44) 
+	public  String pdnotref_chave;
+    
 }

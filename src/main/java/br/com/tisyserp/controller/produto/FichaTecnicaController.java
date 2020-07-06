@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
 
 import org.eclipse.microprofile.faulttolerance.Retry;
 
-import br.com.tisyserp.model.produto.FichaTecnica;
+import br.com.tisyserp.model.producao.FichaTecnica;
 
 @Path("/fichatecnica")
 @ApplicationScoped

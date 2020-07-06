@@ -1,7 +1,5 @@
 package br.com.tisyserp.model.pessoa;
 
-
-
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

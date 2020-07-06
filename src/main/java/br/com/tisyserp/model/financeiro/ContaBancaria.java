@@ -17,7 +17,6 @@ import javax.validation.constraints.Size;
 import br.com.tisyserp.model.tabelaauxiliar.Empresa;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
-
 @Entity
 @Table(name = "conta_bancaria")
 
@@ -37,6 +36,10 @@ public class ContaBancaria extends PanacheEntityBase  {
 	@JoinColumn(name = "coba_banc_id", referencedColumnName = "banc_id")
 	@OneToOne
 	public Banco banc_id;
+
+	@NotNull
+	@Size(max = 6)
+	public String coba_nome_redu;
 
 	@NotNull
 	@Size(max = 5)

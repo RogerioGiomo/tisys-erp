@@ -16,53 +16,51 @@ import javax.validation.constraints.Size;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
-@Table(name = "pedido_item")
+@Table(name = "pedido_item_devolvido")
 
-public  class PedidoItem extends PanacheEntityBase {
+public  class PedidoItemDevolvido extends PanacheEntityBase {
 
 	public  static  Long serialVersionUID = 1L;
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	public  Long pdit_id;
+	public  Long pditdev_id;
 
 	@NotNull
-	public  Long pdit_pedi;
+	public  Long pditdev_pedi;
 
 	@NotNull
 	@Size(max = 10) 
-	public  String pdit_prod_codi; 
+	public  String pditdev_prod_codi; 
 
 	@NotNull
-	public  BigDecimal pdit_quan;
+	public  BigDecimal pditdev_quan;
 
-	public  BigDecimal pdit_quan_fatu;
-
-	@NotNull
-	public  BigDecimal pdit_unit;
+	public  BigDecimal pditdev_quan_fatu;
 
 	@NotNull
-	public  BigDecimal pdit_unit_liqu;
-
-	public  BigDecimal pdit_desc_valo;
-
-	public  BigDecimal pdit_desc_perc;
+	public  BigDecimal pditdev_unit;
 
 	@NotNull
-	public  BigDecimal pdit_total;
+	public  BigDecimal pditdev_unit_liqu;
+
+	public  BigDecimal pditdev_desc_valo;
+
+	public  BigDecimal pditdev_desc_perc;
 
 	@NotNull
-	public  BigDecimal pdit_total_liqu;
+	public  BigDecimal pditdev_total;
 
-	public  BigDecimal pdit_desc_espe;   // desconto especial 
+	@NotNull
+	public  BigDecimal pditdev_total_liqu;
+
+	public  BigDecimal pditdev_desc_espe;   // desconto especial 
 
 	@JsonbDateFormat(value = "dd-MM-yyyy") 
-	public  Date pdit_data_incl; // data da inclusao do item no pedido
+	public  Date pditdev_data_incl; // data da inclusao do item no pedido
 
-	public  BigDecimal pdit_desc_pedi;  // desconto oferecido no pedido 
+	public  BigDecimal pditdev_desc_pedi;  // desconto oferecido no pedido 
 
-	public  BigDecimal pdit_libe_preco;;
-
-
+	public  BigDecimal pditdev_libe_preco;;
 }

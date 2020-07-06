@@ -1,4 +1,4 @@
-package br.com.tisyserp.model.produto;
+package br.com.tisyserp.model.producao;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import br.com.tisyserp.model.produto.Produto;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity

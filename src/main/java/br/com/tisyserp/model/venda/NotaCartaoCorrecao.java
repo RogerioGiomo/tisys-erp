@@ -1,6 +1,11 @@
-package  br.com.tisyserp.model.financeiro;
+package br.com.tisyserp.model.venda;
 
+import java.math.BigDecimal;
+import java.sql.Date;
+
+import javax.json.bind.annotation.JsonbDateFormat;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,26 +17,19 @@ import javax.validation.constraints.Size;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
-@Table(name = "banco")
+@Table(name = "nota_carta_correcao")
 
-public class Banco extends PanacheEntityBase  {
-	
+public class NotaCartaoCorrecao extends PanacheEntityBase {
+
 	public static  Long serialVersionUID = 1L;
 	@Id
 	@Basic(optional = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long banc_id;
+	public Long notcarcor_id;
 
-	@NotNull
-	@Size(max = 4)
-	public String banc_codi;   // codigo bancario 237-bradesco 341-itau 001 brasil
-
-	@NotNull
-	@Size(max = 60)
-	public String banc_desc;
-
-	@NotNull
-	@Size(max = 10)
-	public String banc_desc_redu;
-	
+	public long notcarcor_nota_id;
+	public long notcarcor_nota_seque;
+    
+    @Size(max = 200)
+	public String notcarcor_texto;
 }
