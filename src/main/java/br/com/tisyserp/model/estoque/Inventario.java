@@ -5,13 +5,11 @@ import java.sql.Date;
 
 import javax.json.bind.annotation.JsonbDateFormat;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
@@ -21,7 +19,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 public class Inventario extends PanacheEntityBase {
     
-    public static  BigDecimal serialVersionUID = 1L;
+    public static  Long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)

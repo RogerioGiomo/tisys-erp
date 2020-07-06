@@ -28,11 +28,12 @@ import br.com.tisyserp.model.tabelaauxiliar.Empresa;
 import br.com.tisyserp.model.tabelaauxiliar.TipoEmissaoNota;
 import br.com.tisyserp.model.veiculo.Veiculo;
 import br.com.tisyserp.model.veiculo.VeiculoTipoFrete;
+import br.com.tisyserp.model.venda.TipoMovimento;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
-@Table(name = "compra")
-public class Compra extends PanacheEntityBase {
+@Table(name = "compra_Pedido")
+public class CompraPedido extends PanacheEntityBase {
 	
 	public static  long serialVersionUID = 1L;
 	@Id
