@@ -1,4 +1,4 @@
-package br.com.tisyserp.model.venda;
+package br.com.tisyserp.model.compra;
 
 import java.math.BigDecimal;
 import java.sql.Date;
