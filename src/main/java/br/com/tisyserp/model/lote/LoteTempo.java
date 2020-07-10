@@ -3,6 +3,7 @@ package br.com.tisyserp.model.lote;
 import java.sql.Date;
 
 import javax.json.bind.annotation.JsonbDateFormat;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,13 +37,15 @@ public  class LoteTempo extends PanacheEntityBase {
 	@Size(max = 10)
 	public Date lote_data;   // Data Da Fabricao do Lote
 
+	@Column(columnDefinition = "Long default 0")
 	public Long lote_said;
 
+	@Column(columnDefinition = "Long default 0")
 	public Long lote_entr;
-	
+
+	@Column(columnDefinition = "Long default 0")
 	public Long lote_atua;
 
-	@NotNull
 	@JsonbDateFormat(value = "dd-MM-yyyy") 
 	@Size(max = 10)
 	public Date lote_vali;   // Data Da validade 
